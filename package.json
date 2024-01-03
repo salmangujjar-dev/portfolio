@@ -6,12 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-images": "yarn svgr --out-dir src/assets/src src/assets/svgs --typescript --ignore-existing",
+    "type-check": "tsc --pretty --noEmit --incremental"
   },
   "dependencies": {
+    "@svgr/cli": "^8.1.0",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.16",
+    "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.3"
+    "react-simple-typewriter": "^5.0.1",
+    "react-social-icons": "^6.7.0",
+    "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
     "typescript": "^5",
