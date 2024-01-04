@@ -8,7 +8,13 @@ const config: Config = {
     "./src/screen/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      textColor: {
+        cinder: {
+          light: "#656D72",
+        },
+      },
+    },
   },
   plugins: [],
 };

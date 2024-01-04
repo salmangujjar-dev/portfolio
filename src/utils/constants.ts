@@ -8,6 +8,10 @@ export const NAVBAR = [
     href: "/about",
   },
   {
+    label: "Projects",
+    href: "/projects",
+  },
+  {
     label: "Contact",
     href: "/contact",
   },
@@ -25,3 +29,11 @@ export const SOCIALS = [
 ];
 
 export const EMAIL = "mailto:isalmandev@gmail.com";
+
+export const defaultProps = {
+  motion: {
+    initial: { x: -500, opacity: 0.5, scale: 0.5 },
+    animate: { x: 0, opacity: 1, scale: 1 },
+    transition: { duration: 1 },
+  },
+};

@@ -14,14 +14,13 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+}*/
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
+  color: white;
+  font-family: Inter;
+  font-size: 16px;
+  background: #090e16;
+  margin: 0;
+  padding: 0;
+}
