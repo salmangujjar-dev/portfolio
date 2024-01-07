@@ -11,13 +11,12 @@ import { Typewriter } from "react-simple-typewriter";
 import { EMAIL, SOCIALS, defaultProps } from "@utils/constants";
 
 const Hero = () => {
-  
   return (
-    <div className="h-screen w-screen justify-between md:px-8 px-2 lg:px-32 flex flex-col gap-y-5 md:gap-y-0 md:flex-row items-center">
+    <div className="h-screen w-screen justify-between md:px-8 px-2 lg:px-32 xl:px-48 flex flex-col gap-y-5 md:gap-y-0 md:flex-row items-center">
       <div className="flex flex-col gap-y-1 order-2 md:order-1 items-center md:items-start">
         <div className="flex gap-x-6 items-center">
           <div className="w-[1rem] h-[0.1rem] bg-white" />
-          <h5 className="uppercase text-cinder-light text-sm md:text-base font-medium tracking-[0.5rem]">
+          <h5 className="uppercase text-cinder-light text-sm md:text-base lg:text-lg font-medium tracking-[0.5rem]">
             <Typewriter
               words={["My name is", "Mi nombre es", "Ismee", "Ich heiße"]}
               loop={true}
@@ -31,7 +30,7 @@ const Hero = () => {
         </div>
         <motion.div
           {...defaultProps.motion}
-          className="text-3xl text-wrap md:text-5xl font-bold font-['Plus Jakarta Sans'] space-x-2"
+          className="text-3xl text-wrap md:text-5xl lg:text-6xl font-bold font-['Plus Jakarta Sans'] space-x-2"
         >
           <span className="text-zinc-100">Salman</span>
           <span className="text-indigo-400">Ahmed.</span>
@@ -40,7 +39,7 @@ const Hero = () => {
           <motion.span
             {...defaultProps.motion}
             transition={{ duration: 1.2 }}
-            className="block text-center md:text-start max-w-[30rem] text-base font-normal leading-5 text-cinder-light"
+            className="block text-center md:text-start max-w-[30rem] text-base lg:text-lg  font-normal leading-5 text-cinder-light"
           >
             Full-stack developer with more than 2+ years of experience in
             enterprise companies and startups. Proficient in JavaScript,
@@ -66,8 +65,8 @@ const Hero = () => {
               className="cursor-pointer hover:scale-125"
             />
             <motion.a
-            target="_blank"
-            href="Salman-Ahmed-Resume.pdf"
+              target="_blank"
+              href="Salman-Ahmed-Resume.pdf"
               initial={{ scale: 1.3 }}
               animate={{ scale: 1 }}
               transition={{ ease: "easeIn", duration: 0.5 }}
