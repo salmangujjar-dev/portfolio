@@ -1,11 +1,7 @@
-export const NAVBAR = [
+export const NAVBAR_OPTIONS = [
   {
     label: "Home",
     href: "/",
-  },
-  {
-    label: "About",
-    href: "/about",
   },
   {
     label: "Projects",

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Header from "@components/Header";
+import { clsxm } from "@utils/clsxm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {/* <Header /> */}
-        {children}
+      <body
+        className={clsxm(
+          inter.className,
+          "min-h-screen flex flex-col h-screen"
+        )}
+      >
+        <Header />
+        <main className="flex-grow flex items-center">{children}</main>
       </body>
     </html>
   );
