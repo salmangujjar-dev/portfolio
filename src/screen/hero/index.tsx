@@ -12,7 +12,7 @@ import { EMAIL, SOCIALS, defaultProps } from "@utils/constants";
 
 const Hero = () => {
   return (
-    <div className="h-screen w-screen justify-between md:px-8 px-2 lg:px-32 xl:px-48 flex flex-col gap-y-5 md:gap-y-0 md:flex-row items-center">
+    <div className="min-h-screen justify-center md:justify-between py-2 md:px-8 px-2 lg:px-32 xl:px-48 flex flex-col gap-y-5 md:gap-y-0 md:flex-row items-center">
       <div className="flex flex-col gap-y-1 order-2 md:order-1 items-center md:items-start">
         <div className="flex gap-x-6 items-center">
           <div className="w-[1rem] h-[0.1rem] bg-white" />
@@ -95,6 +95,7 @@ const Hero = () => {
           <Image
             src="/hero_avatar.png"
             alt="hero_avatar"
+            className="w-96"
             width={500}
             height={500}
             priority
