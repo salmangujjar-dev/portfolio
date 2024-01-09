@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <header
       className={clsxm(
-        "flex items-center top-0 relative px-2 py-4 md:px-20 lg:px-48 justify-between rounded-2xl bg-[rgba(123,74,226,0.05)]",
+        "flex items-center top-0 relative px-3 py-2 lg:px-4 xl:px-6 lg:py-2 xl:py-3 md:mt-2 md:mx-10 lg:mx-20 xl:mx-32 justify-between rounded-b-md md:rounded-full bg-indigo-800",
         { ["flex-col gap-y-2"]: menu }
       )}
     >
