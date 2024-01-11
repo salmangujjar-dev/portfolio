@@ -16,6 +16,10 @@ const variants: Variants = {
     y: 0,
     opacity: 1,
     display: "flex",
+    pointerEvents: "none",
+    transitionEnd: {
+      pointerEvents: "auto",
+    },
     transition: {
       y: { stiffness: 1000, velocity: -100 },
     },
@@ -26,6 +30,7 @@ const variants: Variants = {
       display: "none",
     },
     opacity: 0,
+    pointerEvents: "none",
     transition: {
       y: { stiffness: 1000 },
     },
@@ -42,7 +47,7 @@ const Header = () => {
   return (
     <header
       className={clsxm(
-        "md:flex md:items-center top-0 relative px-3 py-2 lg:px-4 xl:px-6 lg:py-2 xl:py-3 md:mt-2 md:mx-10 lg:mx-20 xl:mx-32 md:justify-between rounded-b-md md:rounded-full bg-indigo-800"
+        "md:flex md:items-center top-0 relative px-3 py-2 lg:px-4 xl:px-6 lg:py-2 xl:py-3 md:mt-6 md:mx-10 lg:mx-20 xl:mx-32 md:justify-between rounded-b-md md:rounded-full bg-indigo-800"
       )}
     >
       <motion.div
