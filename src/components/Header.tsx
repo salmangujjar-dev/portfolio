@@ -15,12 +15,16 @@ const variants: Variants = {
   open: {
     y: 0,
     opacity: 1,
+    display: "flex",
     transition: {
       y: { stiffness: 1000, velocity: -100 },
     },
   },
   closed: {
     y: "-100%",
+    transitionEnd: {
+      display: "none",
+    },
     opacity: 0,
     transition: {
       y: { stiffness: 1000 },
@@ -38,8 +42,7 @@ const Header = () => {
   return (
     <header
       className={clsxm(
-        "flex items-center top-0 relative px-3 py-2 lg:px-4 xl:px-6 lg:py-2 xl:py-3 md:mt-2 md:mx-10 lg:mx-20 xl:mx-32 justify-between rounded-b-md md:rounded-full bg-indigo-800",
-        { ["flex-col gap-y-2"]: menu }
+        "md:flex md:items-center top-0 relative px-3 py-2 lg:px-4 xl:px-6 lg:py-2 xl:py-3 md:mt-2 md:mx-10 lg:mx-20 xl:mx-32 md:justify-between rounded-b-md md:rounded-full bg-indigo-800"
       )}
     >
       <motion.div
@@ -70,12 +73,15 @@ const Header = () => {
       </motion.div>
       <motion.nav
         className={clsxm(
-          "md:gap-x-6 md:inline-flex gap-y-2 text-center hidden",
-          { ["flex flex-col mx-auto"]: menu }
+          "md:gap-x-6 md:inline-flex gap-y-2 text-center flex-col md:flex-row",
+          {
+            ["mx-auto"]: menu,
+          }
         )}
+        initial={{ display: "none" }}
         animate={!isMd ? (menu ? "open" : "closed") : undefined}
         {...(isMd && {
-          initial: { x: 500, opacity: 0.5 },
+          initial: { x: 500, opacity: 0.5, display: "flex" },
           animate: { x: 0, opacity: 1 },
           transition: { duration: 1, ease: "easeInOut" },
         })}
