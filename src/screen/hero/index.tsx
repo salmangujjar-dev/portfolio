@@ -69,7 +69,7 @@ const Hero = () => {
               href="Salman-Ahmed-Resume.pdf"
               initial={{ scale: 1.3 }}
               animate={{ scale: 1 }}
-              transition={{ ease: "easeIn", duration: 0.5 }}
+              transition={{ ease: "easeIn", duration: 0.1 }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9, x: "-5px", y: "5px" }}
               type="button"
