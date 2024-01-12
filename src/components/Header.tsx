@@ -110,7 +110,7 @@ const Header = () => {
             {NAVBAR_OPTIONS.map((item, index) => (
               <Link
                 key={index}
-                href="#"
+                href={item.href}
                 className="relative px-2 py-1.5 rounded-md cursor-pointer hover:scale-125 ease-in-out duration-300 font-medium tracking-wide group"
               >
                 <span>{item.label}</span>

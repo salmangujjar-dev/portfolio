@@ -5,7 +5,7 @@ export const NAVBAR_OPTIONS = [
   },
   {
     label: "Projects",
-    href: "/projects",
+    href: "#",
   },
   {
     label: "Contact",
