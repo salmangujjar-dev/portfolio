@@ -1,3 +1,5 @@
+import { Slide, ToastOptions } from "react-toastify";
+
 export const NAVBAR_OPTIONS = [
   {
     label: "Home",
@@ -23,8 +25,7 @@ export const SOCIALS = [
     href: "https://www.github.com/salmangujjar-dev",
   },
 ];
-
-export const EMAIL = "mailto:isalmandev@gmail.com";
+export const EMAIL = "isalmandev@gmail.com";
 
 export const defaultProps = {
   motion: {
@@ -32,4 +33,12 @@ export const defaultProps = {
     animate: { x: 0, opacity: 1, scale: 1 },
     transition: { duration: 1 },
   },
+};
+
+export const snackbarOptions: ToastOptions = {
+  position: "top-right",
+  autoClose: 3000,
+  closeOnClick: true,
+  theme: "dark",
+  transition: Slide,
 };

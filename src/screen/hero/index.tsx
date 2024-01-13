@@ -59,7 +59,7 @@ const Hero = () => {
             <SocialIcon
               network="email"
               target="_blank"
-              href={EMAIL}
+              href={`mailto:${EMAIL}`}
               fgColor="gray"
               bgColor="transparent"
               className="cursor-pointer hover:scale-125"
