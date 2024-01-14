@@ -11,6 +11,7 @@ import { NAVBAR_OPTIONS } from "@utils/constants";
 import { clsxm } from "@utils/clsxm";
 
 import { MdMenuOpen } from "react-icons/md";
+import { usePathname } from "next/navigation";
 
 const variants: Variants = {
   open: {
@@ -40,6 +41,8 @@ const variants: Variants = {
 
 const Header = () => {
   const [menu, setMenu] = useState<boolean | undefined>(true);
+
+  const pathname = usePathname();
 
   const isMd = useMediaQuery(EScreenType.md);
   const mounted = useMounted();
@@ -110,11 +113,16 @@ const Header = () => {
             {NAVBAR_OPTIONS.map((item, index) => (
               <Link
                 key={index}
-                href="#"
+                href={item.href}
                 className="relative px-2 py-1.5 rounded-md cursor-pointer hover:scale-125 ease-in-out duration-300 font-medium tracking-wide group"
               >
                 <span>{item.label}</span>
-                <span className="absolute -bottom-1 left-0 w-0 transition-all h-1 bg-indigo-400 group-hover:w-full" />
+                <span
+                  className={clsxm(
+                    "absolute -bottom-1 left-0 w-0 transition-all h-1 bg-indigo-400 group-hover:w-full",
+                    { ["w-full"]: pathname === item.href }
+                  )}
+                />
               </Link>
             ))}
           </motion.nav>
