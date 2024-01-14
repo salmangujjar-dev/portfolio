@@ -11,6 +11,7 @@ import { TContactForm } from "@utils/types";
 import { snackbarOptions } from "@utils/constants";
 
 import "react-toastify/dist/ReactToastify.css";
+import { Typewriter } from "react-simple-typewriter";
 
 const ContactScreen = () => {
   return (
@@ -18,9 +19,20 @@ const ContactScreen = () => {
       initial={{ scale: 0.4, opacity: 0.5 }}
       animate={{ scale: [0.4, 1.2, 1], opacity: 1 }}
       transition={{ duration: 1, ease: easeInOut }}
-      className="w-full md:px-8 px-2 lg:px-32 xl:px-48 flex justify-center"
+      className="w-full md:px-8 px-2 lg:px-32 xl:px-48 flex flex-col items-center gap-y-10 justify-center"
     >
       <ToastContainer position="top-right" />
+      <h1 className="text-3xl md:text-5xl text-center font-sans tracking-[0.5rem] font-extrabold text-stroke-sm shadow-indigo-400">
+        Get in Touch{" "}
+        <Typewriter
+          words={["..."]}
+          loop={true}
+          cursor
+          cursorStyle="_"
+          typeSpeed={200}
+          // deleteSpeed={500}
+        />
+      </h1>
 
       <Formik<TContactForm>
         initialValues={{
@@ -46,7 +58,7 @@ const ContactScreen = () => {
           }
         }}
       >
-        <Form className="flex flex-col gap-y-5 w-96">
+        <Form className="flex flex-col gap-y-5 w-full max-w-96">
           <FieldArea
             component={FieldArea.componenet}
             type="text"
