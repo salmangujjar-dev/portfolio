@@ -4930,6 +4930,11 @@ tailwind-merge@^2.1.0:
   dependencies:
     "@babel/runtime" "^7.23.5"
 
+tailwind-scrollbar@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/tailwind-scrollbar/-/tailwind-scrollbar-3.0.5.tgz#c904118f4f1a572edef93da2d436e1db8b93dd87"
+  integrity sha512-0ZwxTivevqq9BY9fRP9zDjHl7Tu+J5giBGbln+0O1R/7nHtBUKnjQcA1aTIhK7Oyjp6Uc/Dj6/dn8Dq58k5Uww==
+
 tailwind-variants@^0.1.18:
   version "0.1.20"
   resolved "https://registry.yarnpkg.com/tailwind-variants/-/tailwind-variants-0.1.20.tgz#8aaed9094be0379a438641a42d588943e44c5fcd"
