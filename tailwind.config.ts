@@ -30,7 +30,8 @@ const config: Config = {
   },
   darkMode: "class",
   plugins: [
-    nextui(),
+    nextui(), 
+    require("tailwind-scrollbar"),
     plugin(function ({ matchUtilities, theme }: PluginAPI) {
       matchUtilities(
         {
