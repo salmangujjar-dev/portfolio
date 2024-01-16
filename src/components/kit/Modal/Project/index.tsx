@@ -1,4 +1,10 @@
-import { Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
+import {
+  Link,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+} from "@nextui-org/react";
 
 import Badge from "@components/kit/Badge";
 
@@ -31,6 +37,14 @@ const ModalKit = (props: Props) => {
           <>
             <ModalHeader className="flex flex-col gap-1">
               {data.title}
+              <Link
+                isExternal
+                href={data.url}
+                showAnchorIcon
+                underline="always"
+              >
+                View Site
+              </Link>
             </ModalHeader>
             <ModalBody>
               {/* eslint-disable-next-line @next/next/no-img-element*/}
@@ -39,6 +53,7 @@ const ModalKit = (props: Props) => {
                 alt={data.title}
                 className="shrink-0 rounded-lg max-h-sm md:max-h-full"
               />
+
               <p>{data.description}</p>
               <h1 className="text-xl font-sans tracking-[0.3rem] font-extrabold">
                 Features:{" "}

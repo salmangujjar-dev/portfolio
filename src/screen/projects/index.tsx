@@ -9,6 +9,7 @@ import { PROJECTS } from "@utils/constants";
 
 const ProjectsScreen = () => {
   const [isOpen, setIsOpen] = useState<number | undefined>(undefined);
+  const [dragging, setDragging] = useState<boolean>(false);
 
   const handleToggle = (index: number) => {
     setIsOpen(isOpen === undefined ? index : undefined);
@@ -21,7 +22,14 @@ const ProjectsScreen = () => {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.5, opacity: 0.5 }}
         transition={{ duration: 1, ease: "backInOut" }}
-        className="flex flex-col md:flex-row flex-shrink justify-between items-center md:items-start gap-y-4 md:gap-y-0 md:gap-x-5 w-full"
+        className="flex flex-col cursor-grab active:cursor-grabbing md:flex-row flex-shrink justify-between items-center md:items-start gap-y-4 md:gap-y-0 md:gap-x-5 w-full"
+        drag="x"
+        dragConstraints={{
+          right: 0,
+          left: 0,
+        }}
+        onDragStart={() => setDragging(true)}
+        onDragEnd={() => setDragging(false)}
       >
         {PROJECTS.map((item, index) => {
           return (
