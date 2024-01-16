@@ -65,7 +65,7 @@ export const PROJECTS: TProjects[] = [
   {
     imageSrc: "/quora_concept.png",
     title: "Quora Concept",
-    url: "https://zombie-apocalypse-front.vercel.app/",
+    url: "https://project-quora-clone-front.vercel.app/",
     stack: "MERN",
     description:
       "Quora Concept Clone is a question-and-answer project where users can ask questions on various topics and receive answers from other users. Build in React.JS and headless extended components were made instead of using UI libraries.",
