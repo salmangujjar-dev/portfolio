@@ -14,7 +14,7 @@ export type TProjects = {
   imageSrc: string;
   title: string;
   url: string;
-  stack: string;
+  technologies: string[];
   description: string;
   features: string[];
 };
