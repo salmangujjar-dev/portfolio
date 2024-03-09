@@ -46,7 +46,7 @@ const ModalKit = (props: Props) => {
                 View Site
               </Link>
             </ModalHeader>
-            <ModalBody>
+            <ModalBody className="mb-2">
               {/* eslint-disable-next-line @next/next/no-img-element*/}
               <img
                 src={data.imageSrc}
@@ -64,9 +64,13 @@ const ModalKit = (props: Props) => {
                 ))}
               </div>
               <h1 className="text-xl font-sans tracking-[0.3rem] font-extrabold">
-                Tech Stack:{" "}
+                Technology:{" "}
               </h1>
-              <Badge>{data.stack}</Badge>
+              <div className="flex flex-wrap gap-2">
+                {data.technologies.map((item, index) => (
+                  <Badge key={index}>{item}</Badge>
+                ))}
+              </div>
             </ModalBody>
           </>
         )}
