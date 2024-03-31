@@ -16,7 +16,7 @@ export async function sendMail(subject: string, email: string, body: string) {
     text: body,
   };
 
-  transporter.sendMail(mailOptions, function (error: string) {
+  await transporter.sendMail(mailOptions, function (error: string) {
     if (error) {
       throw new Error(error);
     } else {
