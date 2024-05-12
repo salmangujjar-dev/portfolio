@@ -41,9 +41,11 @@ const Hero = () => {
             transition={{ duration: 1.2 }}
             className="block text-center md:text-start max-w-[30rem] text-base lg:text-lg  font-normal leading-5 text-cinder-light"
           >
-            Full-stack developer with more than 2+ years of experience in
+            Full-stack developer with more than 3+ years of experience in
             enterprise companies and startups. Proficient in JavaScript,
-            TypeScript, React, Next.js, and Tailwind CSS.
+            TypeScript, React, Next.js, React.js, Node.js, Fastify, Java,
+            Crystal, Flutter Web, Tailwind CSS, and ..etc. Hands on experience
+            on Microservices and Monolith architecure.
           </motion.span>
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-2">
             {SOCIALS.map((item, index) => (
@@ -51,7 +53,7 @@ const Hero = () => {
                 key={index}
                 url={item.href}
                 target="_blank"
-                fgColor="gray"
+                fgColor={item.fgColor}
                 bgColor="transparent"
                 className="hover:scale-125"
               />
@@ -59,9 +61,8 @@ const Hero = () => {
             <SocialIcon
               network="email"
               target="_blank"
-              href={`mailto:${EMAIL}`}
-              fgColor="gray"
               bgColor="transparent"
+              href={`mailto:${EMAIL}`}
               className="cursor-pointer hover:scale-125"
             />
             <motion.a

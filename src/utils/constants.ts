@@ -1,10 +1,14 @@
 import { Slide, ToastOptions } from "react-toastify";
-import { TProjects } from "./types";
+import { TCareer, TProjects } from "./types";
 
 export const NAVBAR_OPTIONS = [
   {
     label: "Home",
     href: "/",
+  },
+  {
+    label: "Career",
+    href: "/career",
   },
   {
     label: "Projects",
@@ -16,14 +20,35 @@ export const NAVBAR_OPTIONS = [
   },
 ];
 
+export const CAREER: TCareer[] = [
+  {
+    role: "Software Engineer",
+    company: "Devsinc",
+    companyLink: "https://www.devsinc.com",
+    duration: "2023-Present",
+    details:
+      "I've crafted and managed over 4+ high-performing, scalable applications employing diverse programming languages. Collaborated closely with cross-functional teams to grasp business needs and convert them into technical solutions. Proficiently utilized distributed databases such as MySQL, PostgreSQL, and MongoDB. Additionally, I've taken on the role of mentoring junior engineers, aiding in their technical and professional development.",
+  },
+  {
+    role: "A. Software Engineer",
+    company: "i2c Inc.",
+    companyLink: "https://www.i2cinc.com",
+    duration: "2022-2023",
+    details:
+      "As part of a dynamic team, I contributed to the development of new schedulers for fintech applications, overseeing the overhaul of legacy code to enhance performance and security. Additionally, I spearheaded the creation of new tools tailored for C-level management. Serving as the Team Lead, I provided crucial guidance to a team of multiple developers, ensuring cohesive progress and achievement of objectives.",
+  },
+];
+
 export const SOCIALS = [
   {
     label: "linkedin",
     href: "https://www.linkedin.com/in/salmangujjar-dev",
+    fgColor: "#007fb1",
   },
   {
     label: "github",
     href: "https://www.github.com/salmangujjar-dev",
+    fgColor: "white",
   },
 ];
 
