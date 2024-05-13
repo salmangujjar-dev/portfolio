@@ -26,10 +26,11 @@ const ModalKit = (props: Props) => {
       backdrop="blur"
       scrollBehavior="inside"
       placement="auto"
+      isDismissable={false}
       className="max-w-sm md:max-w-xl"
       classNames={{
+        wrapper: "overflow-y-hidden",
         base: "bg-indigo-900/50",
-        body: "scrollbar-thin scrollbar-thumb-indigo-900 scrollbar-track-gray-100",
       }}
     >
       <ModalContent>
@@ -42,6 +43,7 @@ const ModalKit = (props: Props) => {
                 href={data.url}
                 showAnchorIcon
                 underline="always"
+                className="max-w-fit"
               >
                 View Site
               </Link>
@@ -51,7 +53,7 @@ const ModalKit = (props: Props) => {
               <img
                 src={data.imageSrc}
                 alt={data.title}
-                className="shrink-0 rounded-lg max-h-sm md:max-h-full"
+                className="shrink-0 rounded-lg max-h-sm md:max-h-full select-none"
               />
 
               <p>{data.description}</p>
