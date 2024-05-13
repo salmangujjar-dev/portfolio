@@ -3,16 +3,17 @@ const nodemailer = require("nodemailer");
 export async function sendMail(subject: string, email: string, body: string) {
   var transporter = nodemailer.createTransport({
     port: 465,
-    service: "gmail",
+    service: "smtp.gmail",
     auth: {
+      type: "login",
       user: process.env.NODEMAILER_EMAIL,
       pass: process.env.NODEMAILER_PW,
     },
     secure: true,
   });
 
-  await new Promise((resolve, reject) => {
-    transporter.verify(function (error: {}, success: {}) {
+  await new Promise(async (resolve, reject) => {
+    await transporter.verify(function (error: {}, success: {}) {
       if (error) {
         console.log(error);
         reject(error);
