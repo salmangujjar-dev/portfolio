@@ -11,9 +11,9 @@ export async function sendMail(subject: string, email: string, body: string) {
     },
     secure: true,
   });
-  console.log(`wowowopre: ${process.env.NODEMAILER_EMAIL}`);
+  // console.log(`wowowopre: ${process.env.NODEMAILER_EMAIL}`);
 
-  console.log(`wowowopost: ${process.env.NODEMAILER_EMAIL}`);
+  // console.log(`wowowopost: ${process.env.NODEMAILER_EMAIL}`);
 
   var mailOptions = {
     from: process.env.NODEMAILER_EMAIL,
