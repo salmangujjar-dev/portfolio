@@ -11,6 +11,7 @@ export async function sendMail(subject: string, email: string, body: string) {
     },
     secure: true,
   });
+  console.log(`wowowopre: ${process.env.NODEMAILER_EMAIL}`);
 
   await new Promise(async (resolve, reject) => {
     await transporter.verify(function (error: {}, success: {}) {
@@ -23,6 +24,8 @@ export async function sendMail(subject: string, email: string, body: string) {
       }
     });
   });
+
+  console.log(`wowowopost: ${process.env.NODEMAILER_EMAIL}`);
 
   var mailOptions = {
     from: process.env.NODEMAILER_EMAIL,
