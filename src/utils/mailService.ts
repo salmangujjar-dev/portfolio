@@ -30,11 +30,12 @@ export async function sendMail(subject: string, email: string, body: string) {
     text: body,
   };
 
-  await transporter.sendMail(mailOptions, function (error: {}) {
-    if (error) {
-      throw new Error(`error: ${error}`);
-    } else {
-      return true;
-    }
-  });
+  try {
+    const res = await transporter.sendMail(mailOptions);
+    console.log({ res });
+    return res;
+  } catch (error) {
+    console.log("Error occurred while sending email:", error);
+    throw error;
+  }
 }
