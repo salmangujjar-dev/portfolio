@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: `Salman Ahmed`,
   description: "Author: Salman Ahmed",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
