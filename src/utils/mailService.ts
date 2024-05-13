@@ -30,7 +30,7 @@ export async function sendMail(subject: string, email: string, body: string) {
     text: body,
   };
 
-  await transporter.sendMail(mailOptions, function (error: {}) {
+  return await transporter.sendMail(mailOptions, function (error: {}) {
     if (error) {
       throw new Error(`error: ${error}`);
     } else {

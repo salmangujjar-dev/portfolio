@@ -6,8 +6,8 @@ export async function POST(req: Request) {
   try {
     const data = await sendMail(body.subject, body.email, body.body);
 
-    Response.json(data);
+    return Response.json(data, { status: 200 });
   } catch (error) {
-    return Response.json({ error });
+    return Response.json({ error }, { status: 500 });
   }
 }
