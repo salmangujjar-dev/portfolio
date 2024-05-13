@@ -8,7 +8,6 @@ export async function POST(req: Request) {
 
     return Response.json(data, { status: 200 });
   } catch (error) {
-    console.log({ error });
     return Response.json({ error }, { status: 500 });
   }
 }
