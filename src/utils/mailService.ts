@@ -13,18 +13,6 @@ export async function sendMail(subject: string, email: string, body: string) {
   });
   console.log(`wowowopre: ${process.env.NODEMAILER_EMAIL}`);
 
-  await new Promise(async (resolve, reject) => {
-    await transporter.verify(function (error: {}, success: {}) {
-      if (error) {
-        console.log(error);
-        reject(error);
-      } else {
-        console.log("Server is ready to take our messages");
-        resolve(success);
-      }
-    });
-  });
-
   console.log(`wowowopost: ${process.env.NODEMAILER_EMAIL}`);
 
   var mailOptions = {
