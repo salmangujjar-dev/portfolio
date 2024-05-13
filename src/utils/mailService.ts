@@ -11,9 +11,9 @@ export async function sendMail(subject: string, email: string, body: string) {
     },
     secure: true,
   });
-  console.log(`wowowopre: ${process.env.NODEMAILER_EMAIL}`);
+  // console.log(`wowowopre: ${process.env.NODEMAILER_EMAIL}`);
 
-  console.log(`wowowopost: ${process.env.NODEMAILER_EMAIL}`);
+  // console.log(`wowowopost: ${process.env.NODEMAILER_EMAIL}`);
 
   var mailOptions = {
     from: process.env.NODEMAILER_EMAIL,
@@ -24,11 +24,11 @@ export async function sendMail(subject: string, email: string, body: string) {
 
   return await transporter.sendMail(mailOptions, function (error: {}) {
     if (error) {
-      console.log(`wowowo111: ${process.env.NODEMAILER_EMAIL}`);
+      // console.log(`wowowo111: ${process.env.NODEMAILER_EMAIL}`);
 
       throw new Error(`error: ${error}`);
     } else {
-      console.log(`wowowo222: ${process.env.NODEMAILER_EMAIL}`);
+      // console.log(`wowowo222: ${process.env.NODEMAILER_EMAIL}`);
 
       return true;
     }
