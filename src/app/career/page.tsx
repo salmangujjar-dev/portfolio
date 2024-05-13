@@ -1,20 +1,20 @@
 import { Metadata } from "next";
 
-import ProjectsScreen from "@screen/projects";
+import CareerScreen from "@screen/career";
 import TransitionEffect from "@components/TransitionEffect";
 
 export const metadata: Metadata = {
-  title: "Salman Ahmed - Projects",
-  description: "Projects",
+  title: "Salman Ahmed - Career",
+  description: "Career",
 };
 
-const Projects = () => {
+const Career = () => {
   return (
     <>
       <TransitionEffect />
-      <ProjectsScreen />
+      <CareerScreen />
     </>
   );
 };
 
-export default Projects;
+export default Career;

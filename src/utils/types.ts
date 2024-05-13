@@ -18,3 +18,11 @@ export type TProjects = {
   description: string;
   features: string[];
 };
+
+export type TCareer = {
+  role: String;
+  company: String;
+  companyLink: String;
+  duration: String;
+  details: String;
+};

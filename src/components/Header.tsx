@@ -7,6 +7,7 @@ import { AnimatePresence, Variants, motion } from "framer-motion";
 import { EScreenType, useMediaQuery } from "../hooks/useMediaQuery";
 import useMounted from "../hooks/useMounted";
 
+import { SCharacter } from "@assets/index";
 import { NAVBAR_OPTIONS } from "@utils/constants";
 import { clsxm } from "@utils/clsxm";
 
@@ -56,7 +57,7 @@ const Header = () => {
   return (
     <header
       className={clsxm(
-        "md:flex md:items-center top-0 relative px-3 py-2 lg:px-4 xl:px-6 lg:py-2 xl:py-3 md:mt-6 md:mx-10 lg:mx-20 xl:mx-32 md:justify-between rounded-b-md md:rounded-full bg-indigo-800"
+        "md:flex md:items-center top-0 relative px-3 py-2 lg:px-4 xl:px-6 md:mt-6 md:mx-10 lg:mx-20 xl:mx-32 md:justify-between "
       )}
     >
       <motion.div
@@ -66,12 +67,13 @@ const Header = () => {
         className="flex justify-between w-full"
       >
         <motion.h1
-          className="tracking-wider rounded-full border p-2 hover:border-indigo-500 cursor-pointer select-none"
+          className="tracking-wider flex items-center rounded-full p-2 select-none"
           initial={{ x: -500, opacity: 0.5, scale: 0 }}
           animate={{ x: 0, opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeIn" }}
         >
-          SA
+          <SCharacter className="w-8 h-auto" />
+          <span>Salman Ahmed</span>
         </motion.h1>
         <motion.div
           whileHover={{ scale: 1.2 }}
