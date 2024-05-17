@@ -22,7 +22,7 @@ const ContactScreen = () => {
       className="w-full md:px-8 px-2 lg:px-32 xl:px-48 py-6 flex flex-col items-center gap-y-10 justify-center"
     >
       <ToastContainer position="top-right" />
-      <h1 className="text-3xl md:text-5xl text-center font-sans tracking-[0.4rem] md:tracking-[0.5rem] font-extrabold text-stroke-sm shadow-indigo-400">
+      <h1 className="text-3xl md:text-5xl text-center tracking-[0.4rem] md:tracking-[0.5rem] font-extrabold text-stroke-sm shadow-indigo-400">
         Get in Touch{" "}
         <Typewriter
           words={["..."]}
