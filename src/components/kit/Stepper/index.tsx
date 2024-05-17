@@ -47,7 +47,7 @@ const Stepper: React.FC<TStepper> = ({
       <motion.div
         initial={{ y: 50 }}
         whileInView={{ y: 0 }}
-        transition={{ duration: 0.5, type: "spring" }}
+        transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
       >
         <h3 className="capitalize font-bold text-xl sm:text-xl xs:text-lg">
           {title}{" "}

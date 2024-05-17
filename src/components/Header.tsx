@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, Variants, motion } from "framer-motion";
 
 import { EScreenType, useMediaQuery } from "../hooks/useMediaQuery";
@@ -12,7 +13,6 @@ import { NAVBAR_OPTIONS } from "@utils/constants";
 import { clsxm } from "@utils/clsxm";
 
 import { MdMenuOpen } from "react-icons/md";
-import { usePathname } from "next/navigation";
 
 const variants: Variants = {
   open: {
@@ -42,6 +42,7 @@ const variants: Variants = {
 
 const Header = () => {
   const [menu, setMenu] = useState<boolean | undefined>(true);
+  const { push } = useRouter();
 
   const pathname = usePathname();
 
@@ -67,10 +68,11 @@ const Header = () => {
         className="flex justify-between w-full"
       >
         <motion.h1
-          className="tracking-wider flex items-center rounded-full p-2 select-none"
+          className="tracking-wider flex items-center rounded-full p-2 cursor-pointer"
           initial={{ x: -500, opacity: 0.5, scale: 0 }}
           animate={{ x: 0, opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeIn" }}
+          onClick={() => push("/")}
         >
           <SCharacter className="w-8 h-auto" />
           <span>Salman Ahmed</span>

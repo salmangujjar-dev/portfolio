@@ -11,6 +11,14 @@ import { Typewriter } from "react-simple-typewriter";
 import { EMAIL, SOCIALS, defaultProps } from "@utils/constants";
 
 const Hero = () => {
+  const wrapInImportantTag = (text: String) => {
+    return (
+      <span className="bg-indigo-500 text-nowrap text-sm md:text-medium text-white md:py-0.5 px-1 rounded-md">
+        {text}
+      </span>
+    );
+  };
+
   return (
     <div className="flex-grow w-full justify-center md:justify-between py-2 md:px-8 px-2 lg:px-32 xl:px-48 flex flex-col gap-y-5 md:gap-y-0 md:flex-row items-center">
       <div className="flex flex-col gap-y-1 order-2 md:order-1 items-center md:items-start">
@@ -30,7 +38,7 @@ const Hero = () => {
         </div>
         <motion.div
           {...defaultProps.motion}
-          className="text-3xl text-wrap md:text-5xl lg:text-6xl font-bold font-['Plus Jakarta Sans'] space-x-2"
+          className="text-3xl text-wrap md:text-5xl lg:text-6xl font-bold space-x-2"
         >
           <span className="text-zinc-100">Salman</span>
           <span className="text-indigo-400">Ahmed.</span>
@@ -39,13 +47,19 @@ const Hero = () => {
           <motion.span
             {...defaultProps.motion}
             transition={{ duration: 1.2 }}
-            className="block text-center md:text-start max-w-[30rem] text-base lg:text-lg  font-normal leading-5 text-cinder-light"
+            className="block text-center md:text-start max-w-[30rem] text-base lg:text-lg font-normal leading-5 md:leading-7 text-cinder-light"
           >
-            Full-stack developer with more than 3+ years of experience in
-            enterprise companies and startups. Proficient in JavaScript,
-            TypeScript, React, Next.js, React.js, Node.js, Fastify, Java,
-            Crystal, Flutter Web, Tailwind CSS, and ..etc. Hands on experience
-            on Microservices and Monolith architecure.
+            Full-stack developer with more than {wrapInImportantTag("3+ years")}{" "}
+            of experience in enterprise companies and startups. Proficient in{" "}
+            {wrapInImportantTag("JavaScript")},{" "}
+            {wrapInImportantTag("TypeScript")}, {wrapInImportantTag("React.js")}
+            , {wrapInImportantTag("Next.js")}, {wrapInImportantTag("Node.js")},{" "}
+            {wrapInImportantTag("Fastify")}, {wrapInImportantTag("Java")},
+            {wrapInImportantTag("Crystal")}, {wrapInImportantTag("Flutter Web")}
+            ,{wrapInImportantTag("Tailwind CSS")},{" "}
+            {wrapInImportantTag("Material UI")}, and etc. Hands on experience on{" "}
+            {wrapInImportantTag("Microservices")} and{" "}
+            {wrapInImportantTag("Monolith")} architecure.
           </motion.span>
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-2">
             {SOCIALS.map((item, index) => (

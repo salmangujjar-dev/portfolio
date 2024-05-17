@@ -14,7 +14,7 @@ const CareerScreen = () => {
       transition={{ duration: 1, ease: "easeInOut" }}
       className="w-full md:px-8 px-2 lg:px-32 xl:px-48 py-6 flex flex-col items-center gap-y-10 justify-center"
     >
-      <h1 className="text-3xl md:text-5xl text-center font-sans mb-8 tracking-[0.4rem] md:tracking-[0.5rem] font-extrabold text-stroke-sm shadow-indigo-400">
+      <h1 className="text-3xl md:text-5xl text-center mb-8 tracking-[0.4rem] md:tracking-[0.5rem] font-extrabold text-stroke-sm shadow-indigo-400">
         Career
       </h1>
       <div className="w-[75%] mx-auto relative lg:w-[90%] md:w-full">
