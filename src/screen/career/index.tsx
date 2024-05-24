@@ -28,6 +28,7 @@ const CareerScreen = () => {
               hashLink={item.companyLink}
               duration={item.duration}
               details={item.details}
+              isNoLink={item.isNoLink}
             />
           ))}
         </ul>
