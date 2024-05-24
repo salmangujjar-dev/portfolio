@@ -23,7 +23,7 @@ export const NAVBAR_OPTIONS = [
 
 export const CAREER: TCareer[] = [
   {
-    role: "Software Engineer",
+    role: "Full Stack Developer",
     company: "Devsinc",
     companyLink: "https://www.devsinc.com",
     duration: "2023-Present",
@@ -31,12 +31,20 @@ export const CAREER: TCareer[] = [
       "I've crafted and managed over 4+ high-performing, scalable applications employing diverse programming languages. Collaborated closely with cross-functional teams to grasp business needs and convert them into technical solutions. Proficiently utilized distributed databases such as MySQL, PostgreSQL, and MongoDB. Additionally, I've taken on the role of mentoring junior engineers, aiding in their technical and professional development.",
   },
   {
-    role: "A. Software Engineer",
+    role: "Back End Engineer",
     company: "i2c Inc.",
     companyLink: "https://www.i2cinc.com",
     duration: "2022-2023",
     details:
       "As part of a dynamic team, I contributed to the development of new schedulers for fintech applications, overseeing the overhaul of legacy code to enhance performance and security. Additionally, I spearheaded the creation of new tools tailored for C-level management. Serving as the Team Lead, I provided crucial guidance to a team of multiple developers, ensuring cohesive progress and achievement of objectives.",
+  },
+  {
+    role: "Contractor",
+    company: "Self-Employed - Freelance",
+    companyLink: "#",
+    duration: "2022-2023",
+    details:
+      "I Developed and maintained microservices architecture for various web applications, leveraging technologies such as React.js, Node.js, Express.js, MongoDB, and Docker, reducing development time by 30%.",
   },
 ];
 
