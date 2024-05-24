@@ -6,6 +6,7 @@ type TStepper = {
   hashLink: String;
   duration: String;
   details: String;
+  isNoLink?: boolean;
 };
 
 const Stepper: React.FC<TStepper> = ({
@@ -14,6 +15,7 @@ const Stepper: React.FC<TStepper> = ({
   hashLink,
   duration,
   details,
+  isNoLink = false,
 }) => {
   return (
     <li className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between md:w-[80%]">
@@ -52,7 +54,7 @@ const Stepper: React.FC<TStepper> = ({
         <h3 className="capitalize font-bold text-xl sm:text-xl xs:text-lg">
           {title}{" "}
           <a
-            target="_blank"
+            target={isNoLink ? "_self" : "_blank"}
             className="text-primary dark:text-primaryDark capitalize"
             href={`${hashLink}`}
           >
