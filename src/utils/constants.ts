@@ -42,6 +42,7 @@ export const CAREER: TCareer[] = [
     role: "Contractor",
     company: "Self-Employed - Freelance",
     companyLink: "#",
+    isNoLink: true,
     duration: "2022-2023",
     details:
       "I Developed and maintained microservices architecture for various web applications, leveraging technologies such as React.js, Node.js, Express.js, MongoDB, and Docker, reducing development time by 30%.",

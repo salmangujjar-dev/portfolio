@@ -30,6 +30,7 @@ export type TCareer = {
   role: String;
   company: String;
   companyLink: String;
+  isNoLink?: boolean;
   duration: String;
   details: String;
 };
