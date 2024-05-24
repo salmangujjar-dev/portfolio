@@ -49,7 +49,7 @@ const Hero = () => {
             transition={{ duration: 1.2 }}
             className="block text-center md:text-start max-w-[30rem] text-base lg:text-lg font-normal leading-5 md:leading-7 text-cinder-light"
           >
-            Full-stack developer with more than {wrapInImportantTag("3+ years")}{" "}
+            Full-stack developer with more than {wrapInImportantTag("4+ years")}{" "}
             of experience in enterprise companies and startups. Proficient in{" "}
             {wrapInImportantTag("JavaScript")},{" "}
             {wrapInImportantTag("TypeScript")}, {wrapInImportantTag("React.js")}
