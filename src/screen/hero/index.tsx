@@ -53,10 +53,11 @@ const Hero = () => {
             of experience in enterprise companies and startups. Proficient in{" "}
             {wrapInImportantTag("JavaScript")},{" "}
             {wrapInImportantTag("TypeScript")}, {wrapInImportantTag("React.js")}
-            , {wrapInImportantTag("Next.js")}, {wrapInImportantTag("Node.js")},{" "}
-            {wrapInImportantTag("Fastify")}, {wrapInImportantTag("Java")},
-            {wrapInImportantTag("Crystal")}, {wrapInImportantTag("Flutter Web")}
-            ,{wrapInImportantTag("Tailwind CSS")},{" "}
+            , {wrapInImportantTag("Next.js")}, {wrapInImportantTag("Nest.js")},{" "}
+            {wrapInImportantTag("Node.js")}, {wrapInImportantTag("Fastify")},{" "}
+            {wrapInImportantTag("Java")},{wrapInImportantTag("Crystal")},{" "}
+            {wrapInImportantTag("Flutter Web")},
+            {wrapInImportantTag("Tailwind CSS")},{" "}
             {wrapInImportantTag("Material UI")}, and etc. Hands on experience on{" "}
             {wrapInImportantTag("Microservices")} and{" "}
             {wrapInImportantTag("Monolith")} architecure.

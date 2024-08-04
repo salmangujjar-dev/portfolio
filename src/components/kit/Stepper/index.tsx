@@ -18,7 +18,7 @@ const Stepper: React.FC<TStepper> = ({
   isNoLink = false,
 }) => {
   return (
-    <li className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between md:w-[80%]">
+    <li className="my-8 first:mt-0 last:mb-0 w-[70%] mx-auto flex flex-col items-center justify-between md:w-[80%]">
       <figure className="absolute left-0 stroke-dark dark:stroke-light">
         <svg
           className="-rotate-90 md:w-[60px] md:h-[60px] xs:w-[40px] xs:h-[40px]"

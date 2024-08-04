@@ -24,9 +24,17 @@ export const NAVBAR_OPTIONS = [
 export const CAREER: TCareer[] = [
   {
     role: "Full Stack Developer",
+    company: "AI Synapse",
+    companyLink: "https://www.ai-synapse.io",
+    duration: "2024-Present",
+    details:
+      "Working as a backend developer in NestJS, I am responsible for both the development and deployment of new features. My role involves designing and implementing features and to optimize system performance and ensure efficient feature execution. I am dedicated to selecting and applying the best approaches to enhance backend functionality, ensuring robust and scalable solutions that meet the needs of our applications.",
+  },
+  {
+    role: "Full Stack Developer",
     company: "Devsinc",
     companyLink: "https://www.devsinc.com",
-    duration: "2023-Present",
+    duration: "2023-2024",
     details:
       "I've crafted and managed over 4+ high-performing, scalable applications employing diverse programming languages. Collaborated closely with cross-functional teams to grasp business needs and convert them into technical solutions. Proficiently utilized distributed databases such as MySQL, PostgreSQL, and MongoDB. Additionally, I've taken on the role of mentoring junior engineers, aiding in their technical and professional development.",
   },
@@ -43,7 +51,7 @@ export const CAREER: TCareer[] = [
     company: "Self-Employed - Freelance",
     companyLink: "#",
     isNoLink: true,
-    duration: "2022-2023",
+    duration: "2020-2022",
     details:
       "I Developed and maintained microservices architecture for various web applications, leveraging technologies such as React.js, Node.js, Express.js, MongoDB, and Docker, reducing development time by 30%.",
   },
