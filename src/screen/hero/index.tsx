@@ -4,9 +4,10 @@ import React from "react";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
+
 import { SocialIcon } from "react-social-icons";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { Typewriter } from "react-simple-typewriter";
 
 import { EMAIL, SOCIALS, defaultProps } from "@utils/constants";
 
@@ -56,7 +57,7 @@ const Hero = () => {
             , {wrapInImportantTag("Next.js")}, {wrapInImportantTag("Nest.js")},{" "}
             {wrapInImportantTag("Node.js")}, {wrapInImportantTag("Fastify")},{" "}
             {wrapInImportantTag("Java")},{wrapInImportantTag("Crystal")},{" "}
-            {wrapInImportantTag("Flutter Web")},
+            {wrapInImportantTag("Python")},{wrapInImportantTag("Flutter Web")},{" "}
             {wrapInImportantTag("Tailwind CSS")},{" "}
             {wrapInImportantTag("Material UI")}, and etc. Hands on experience on{" "}
             {wrapInImportantTag("Microservices")} and{" "}
