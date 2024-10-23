@@ -3,6 +3,12 @@
 import { PropsWithChildren } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 
-export function Provider({ children }: PropsWithChildren) {
-  return <NextUIProvider>{children}</NextUIProvider>;
+import ThemeProvider from "./providers/ThemeProvider";
+
+export function Providers({ children }: PropsWithChildren) {
+  return (
+    <NextUIProvider>
+      <ThemeProvider>{children}</ThemeProvider>
+    </NextUIProvider>
+  );
 }
