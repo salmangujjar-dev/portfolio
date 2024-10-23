@@ -1,20 +1,26 @@
 import {
   Aws,
+  Azure,
+  CrystalLang,
   Django,
   Docker,
   ExpressJs,
+  Flutter,
   GoogleCloud,
   GoogleKubernetes,
   HeadlessUi,
   MaterialUi,
   MongoDb,
+  NestJs,
   NextJs,
   NodeJs,
   NuxtJs,
   Postgresql,
   Python,
   ReactJs,
+  Redis,
   StorybookJs,
+  StrapiJs,
   Swagger,
   Tailwind,
   TurboRepo,
@@ -39,6 +45,14 @@ export const TECHNOLOGIES: Record<string, TTechnologies> = {
     label: "Express Js",
     icon: ExpressJs,
   },
+  NEST: {
+    label: "Nest Js",
+    icon: NestJs,
+  },
+  STRAPI: {
+    label: "Strapi Js",
+    icon: StrapiJs,
+  },
   TURBO: {
     label: "Turbo Js",
     icon: TurboRepo,
@@ -58,6 +72,14 @@ export const TECHNOLOGIES: Record<string, TTechnologies> = {
   PYTHON: {
     label: "Python",
     icon: Python,
+  },
+  FLUTTER: {
+    label: "Flutter",
+    icon: Flutter,
+  },
+  CRYSTAL: {
+    label: "Crystal",
+    icon: CrystalLang,
   },
   MATERIAL_UI: {
     label: "Material UI",
@@ -83,6 +105,10 @@ export const TECHNOLOGIES: Record<string, TTechnologies> = {
     label: "Amazon AWS",
     icon: Aws,
   },
+  Azure: {
+    label: "Microsft Azure",
+    icon: Azure,
+  },
   DOCKER: {
     label: "Docker",
     icon: Docker,
@@ -102,5 +128,9 @@ export const TECHNOLOGIES: Record<string, TTechnologies> = {
   MONGO_DB: {
     label: "Mongo DB",
     icon: MongoDb,
+  },
+  REDIS: {
+    label: "Redis",
+    icon: Redis,
   },
 };

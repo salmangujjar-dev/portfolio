@@ -6,7 +6,8 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 
 import { clsxm } from "@utils/clsxm";
-import { Provider } from "./provider";
+import { Providers } from "./provider";
+import TransitionEffect from "@components/TransitionEffect";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,13 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsxm(inter.className)}>
-        <Provider>
+        <Providers>
           <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-grow flex items-center">{children}</main>
             <Footer />
           </div>
-        </Provider>
+        </Providers>
       </body>
     </html>
   );

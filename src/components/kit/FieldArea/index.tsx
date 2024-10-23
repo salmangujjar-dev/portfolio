@@ -22,7 +22,6 @@ FieldArea.componenet = (props: FieldAttributes<any>) => {
           label={label}
           variant="bordered"
           className={clsxm(className)}
-          classNames={{ label: "!text-white" }}
           isRequired={required}
           value={field.value}
           onChange={(e) => setFieldValue(field.name, e.target.value)}
@@ -39,7 +38,6 @@ FieldArea.componenet = (props: FieldAttributes<any>) => {
           placeholder="name@example.com"
           variant="bordered"
           className={clsxm(className)}
-          classNames={{ label: "!text-white" }}
           isRequired={required}
           value={field.value}
           onChange={(e) => setFieldValue(field.name, e.target.value)}
@@ -59,7 +57,6 @@ FieldArea.componenet = (props: FieldAttributes<any>) => {
           disableAutosize
           classNames={{
             input: clsxm("resize-y !max-h-[12rem] !min-h-[8rem]"),
-            label: "!text-white",
           }}
           isRequired={required}
           value={field.value}
