@@ -10,6 +10,7 @@ import { EScreenType, useMediaQuery } from "../../hooks/useMediaQuery";
 import useMounted from "../../hooks/useMounted";
 
 import { FaChevronRight as ChevronRightIcon } from "react-icons/fa";
+import { RoughNotation } from "react-rough-notation";
 
 const ProjectsScreen = () => {
   const [isOpen, setIsOpen] = useState<number | undefined>(undefined);
@@ -28,9 +29,17 @@ const ProjectsScreen = () => {
       transition={{ duration: 1, ease: "easeInOut" }}
       className="w-full md:px-8 px-2 lg:px-32 xl:px-48 py-6 flex flex-col items-center gap-y-10 justify-center"
     >
-      <h1 className="text-3xl md:text-5xl text-center mb-8 tracking-[0.4rem] md:tracking-[0.5rem] font-extrabold text-stroke-sm shadow-indigo-400">
-        Projects
-      </h1>
+      <RoughNotation
+        show
+        type={"highlight"}
+        animationDelay={1200}
+        animationDuration={1000}
+        color="#818cf8"
+      >
+        <h1 className="font-montserrat text-2xl md:text-5xl text-center tracking-[0.1rem] md:tracking-[0.2rem] font-bold text-white uppercase">
+          Projects
+        </h1>
+      </RoughNotation>
       <motion.div
         initial={{ scale: 0.5, opacity: 0.5 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -59,7 +68,7 @@ const ProjectsScreen = () => {
                   ease: "backInOut",
                   type: "spring",
                 }}
-                className="relative group cursor-pointer"
+                className="relative group cursor-pointer text-white"
                 onClick={() => handleToggle(index)}
               >
                 <Image
@@ -70,7 +79,7 @@ const ProjectsScreen = () => {
                   src={item.imageSrc}
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-center bg-black/40 rounded-lg group-hover:opacity-0 transition-opacity">
-                  <h3 className="text-2xl font-bold tracking-widest text-gray-50 dark:text-white">
+                  <h3 className="text-2xl font-bold tracking-widest">
                     {item.title}
                   </h3>
                 </div>
@@ -78,7 +87,7 @@ const ProjectsScreen = () => {
                   <p className="text-sm font-medium select-none line-clamp-4">
                     {item.description}
                   </p>
-                  <div className="inline-flex items-center underline hover:text-gray-900 dark:hover:text-indigo-600 cursor-pointer">
+                  <div className="inline-flex items-center underline hover:text-indigo-600 cursor-pointer">
                     View Project
                     <ChevronRightIcon className="w-4 h-4 ml-1 inline-block text-indigo-600" />
                   </div>

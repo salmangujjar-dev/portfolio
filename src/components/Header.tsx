@@ -13,6 +13,8 @@ import { NAVBAR_OPTIONS } from "@utils/constants";
 import { clsxm } from "@utils/clsxm";
 
 import { MdMenuOpen } from "react-icons/md";
+import { ThemeSwitcher } from "./ThemeSwitcher";
+import SubMenu from "./SubMenu";
 
 const variants: Variants = {
   open: {
@@ -49,8 +51,6 @@ const Header = () => {
   const isMd = useMediaQuery(EScreenType.md);
   const mounted = useMounted();
 
-  const toggleMenu = () => setMenu(!menu);
-
   useEffect(() => {
     setMenu(isMd ? true : undefined);
   }, [isMd]);
@@ -67,37 +67,25 @@ const Header = () => {
         transition={{ duration: 1, ease: "easeInOut" }}
         className="flex justify-between w-full"
       >
-        <motion.h1
-          className="tracking-wider flex items-center rounded-full p-2 cursor-pointer"
-          initial={{ x: -500, opacity: 0.5, scale: 0 }}
-          animate={{ x: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: "easeIn" }}
+        <div
+          className="tracking-wider flex items-end rounded-full p-2 cursor-pointer"
           onClick={() => push("/")}
         >
-          <SCharacter className="w-8 h-auto" />
-          <span>Salman Ahmed</span>
-        </motion.h1>
-        <motion.div
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          className="focus-visible: outline-none"
-        >
-          <MdMenuOpen
-            className={clsxm("md:hidden block h-10 w-10 cursor-pointer", {
-              ["-scale-x-100"]: menu,
-            })}
-            onClick={toggleMenu}
-          />
-        </motion.div>
+          <SCharacter className="w-8 h-fit" />
+          <span>alman Ahmed</span>
+        </div>
+        <div className="focus-visible: outline-none flex items-center">
+          {!isMd && <ThemeSwitcher />}
+          <SubMenu className="md:hidden block h-10 w-10 cursor-pointer">
+            <MdMenuOpen />
+          </SubMenu>
+        </div>
       </motion.div>
       {mounted && (
-        <AnimatePresence
-          key={isMd.toString()}
-          initial={true}
-        >
+        <AnimatePresence key={isMd.toString()} initial={true}>
           <motion.nav
             className={clsxm(
-              "md:gap-x-6 md:inline-flex gap-y-2 text-center hidden flex-col md:flex-row"
+              "md:gap-x-6 md:inline-flex gap-y-2 text-center hidden md:relative flex-col md:flex-row items-center"
             )}
             initial={{ display: "none" }}
             animate={
@@ -129,6 +117,7 @@ const Header = () => {
                 />
               </Link>
             ))}
+            {isMd && <ThemeSwitcher />}
           </motion.nav>
         </AnimatePresence>
       )}

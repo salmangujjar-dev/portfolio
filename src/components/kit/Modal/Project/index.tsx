@@ -30,7 +30,7 @@ const ModalKit = (props: Props) => {
       className="max-w-sm md:max-w-xl"
       classNames={{
         wrapper: "overflow-y-hidden",
-        base: "bg-indigo-900/80",
+        base: "bg-indigo-900/80 text-white",
       }}
     >
       <ModalContent>
@@ -70,10 +70,7 @@ const ModalKit = (props: Props) => {
               </h1>
               <div className="flex justify-between flex-wrap">
                 {data.technologies.map((item, index) => (
-                  <div
-                    className="relative pt-7 group"
-                    key={index}
-                  >
+                  <div className="relative pt-7 group" key={index}>
                     <span className="transition-all text-nowrap opacity-0 origin-bottom scale-0 group-hover:scale-100 group-hover:opacity-100 text-sm duration-200 font-normal focus:outline-none invisible px-2 py-1.5 bg-black text-white rounded-lg shadow-sm group-hover:visible absolute top-0 z-10 right-0">
                       {item.label}
                     </span>

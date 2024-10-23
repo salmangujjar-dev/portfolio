@@ -66,7 +66,8 @@ export const SOCIALS = [
   {
     label: "github",
     href: "https://www.github.com/salmangujjar-dev",
-    fgColor: "white",
+    fgColor: "black",
+    darkFgColor: "white",
   },
 ];
 
@@ -89,6 +90,47 @@ export const snackbarOptions: ToastOptions = {
 };
 
 export const PROJECTS: TProjects[] = [
+  {
+    imageSrc: "/ai-synapse-sales-platform.png",
+    title: "AI Synapse Sales Platform",
+    url: "https://app.ai-synapse.io/",
+    technologies: [
+      TECHNOLOGIES.NEXT,
+      TECHNOLOGIES.NEST,
+      TECHNOLOGIES.TAILWIND,
+      TECHNOLOGIES.SWAGGER,
+      TECHNOLOGIES.REDIS,
+      TECHNOLOGIES.Azure,
+    ],
+    description:
+      "An automated AI Platform to enhance sales and boost conversion rates upto 12%-22% through automated campaigns.",
+    features: [
+      "Campaigns",
+      "Outreach via Emails/LinkedIn/Twitter",
+      "Microservices",
+      "3rd party Integrations",
+    ],
+  },
+  {
+    imageSrc: "/gft-rewards.png",
+    title: "GFT Rewards",
+    url: "https://www.gftrewards.com/",
+    technologies: [
+      TECHNOLOGIES.FLUTTER,
+      TECHNOLOGIES.CRYSTAL,
+      TECHNOLOGIES.STRAPI,
+      TECHNOLOGIES.SWAGGER,
+      TECHNOLOGIES.AWS,
+    ],
+    description:
+      "GFT's Rewards-as-a-Service is an end-to-end collaborative, feature-rich B2B and B2C platform enabling retailers, brands, and agencies to create, budget, distribute, and settle paper and digital rewards efficiently.",
+    features: [
+      "Talent Hiring",
+      "Multiple Panels",
+      "Monorepository",
+      "Microservices Architecture",
+    ],
+  },
   {
     imageSrc: "/remotereps.png",
     title: "RemoteReps",

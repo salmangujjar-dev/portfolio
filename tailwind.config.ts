@@ -26,11 +26,14 @@ const config: Config = {
           "-2px -2px 0 var(--tw-shadow-color), 2px -2px 0 var(--tw-shadow-color), -2px 2px 0 var(--tw-shadow-color), 2px 2px 0 var(--tw-shadow-color)",
         lg: "-3px -3px 0 var(--tw-shadow-color), 3px -3px 0 var(--tw-shadow-color), -3px 3px 0 var(--tw-shadow-color), 3px 3px 0 var(--tw-shadow-color)",
       },
+      fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+      },
     },
   },
   darkMode: "class",
   plugins: [
-    nextui(), 
+    nextui(),
     require("tailwind-scrollbar"),
     plugin(function ({ matchUtilities, theme }: PluginAPI) {
       matchUtilities(

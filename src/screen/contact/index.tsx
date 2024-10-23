@@ -12,6 +12,7 @@ import { snackbarOptions } from "@utils/constants";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Typewriter } from "react-simple-typewriter";
+import { RoughNotation } from "react-rough-notation";
 
 const ContactScreen = () => {
   return (
@@ -22,18 +23,24 @@ const ContactScreen = () => {
       className="w-full md:px-8 px-2 lg:px-32 xl:px-48 py-6 flex flex-col items-center gap-y-10 justify-center"
     >
       <ToastContainer position="top-right" />
-      <h1 className="text-3xl md:text-5xl text-center tracking-[0.4rem] md:tracking-[0.5rem] font-extrabold text-stroke-sm shadow-indigo-400">
-        Get in Touch{" "}
-        <Typewriter
-          words={["..."]}
-          loop={true}
-          cursor
-          cursorStyle="_"
-          typeSpeed={200}
-
-          // deleteSpeed={500}
-        />
-      </h1>
+      <RoughNotation
+        show
+        type={"highlight"}
+        animationDelay={1200}
+        animationDuration={1000}
+        color="#818cf8"
+      >
+        <h1 className="font-montserrat text-2xl md:text-5xl text-center tracking-[0.1rem] md:tracking-[0.2rem] font-bold text-white uppercase">
+          Get in Touch{" "}
+          <Typewriter
+            words={["..."]}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={200}
+          />
+        </h1>
+      </RoughNotation>
 
       <Formik<TContactForm>
         initialValues={{
