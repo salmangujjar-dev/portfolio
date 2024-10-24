@@ -71,7 +71,7 @@ const Header = () => {
           className="tracking-wider flex items-end rounded-full p-2 cursor-pointer"
           onClick={() => push("/")}
         >
-          <SCharacter className="w-8 h-fit" />
+          <SCharacter className="w-8 h-auto" />
           <span>alman Ahmed</span>
         </div>
         <div className="focus-visible: outline-none flex items-center">
