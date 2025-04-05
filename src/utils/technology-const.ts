@@ -26,9 +26,8 @@ import {
   TurboRepo,
   Webpack,
 } from "@assets/index";
-import { TTechnologies } from "./types";
 
-export const TECHNOLOGIES: Record<string, TTechnologies> = {
+export const TECHNOLOGIES = {
   NEXT: {
     label: "Next Js",
     icon: NextJs,
