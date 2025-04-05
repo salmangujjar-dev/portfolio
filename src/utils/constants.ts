@@ -23,12 +23,20 @@ export const NAVBAR_OPTIONS = [
 
 export const CAREER: TCareer[] = [
   {
+    role: "Senior Full Stack Developer",
+    company: "OneStream Live",
+    companyLink: "https://onestream.live/",
+    duration: "2024-Present",
+    details:
+      "Working as a Senior Full Stack Developer, pioneering the development of OneStream Frontend 2.0, and Backend 3.0, following the best practices, SOLID, and DRY principle.",
+  },
+  {
     role: "Full Stack Developer",
     company: "AI Synapse",
     companyLink: "https://www.ai-synapse.io",
-    duration: "2024-Present",
+    duration: "2024-2025",
     details:
-      "Working as a backend developer in NestJS, I am responsible for both the development and deployment of new features. My role involves designing and implementing features and to optimize system performance and ensure efficient feature execution. I am dedicated to selecting and applying the best approaches to enhance backend functionality, ensuring robust and scalable solutions that meet the needs of our applications.",
+      "Working as a Full Stack Developer, I am responsible for both the development and deployment of new features. My role involves designing and implementing features and to optimize system performance and ensure efficient feature execution. I am dedicated to selecting and applying the best approaches to enhance backend functionality, ensuring robust and scalable solutions that meet the needs of our applications.",
   },
   {
     role: "Full Stack Developer",
@@ -90,6 +98,36 @@ export const snackbarOptions: ToastOptions = {
 };
 
 export const PROJECTS: TProjects[] = [
+  {
+    imageSrc: "/onestream-live.png",
+    title: "OneStream Live",
+    url: "https://app.onestream.live/",
+    technologies: [
+      TECHNOLOGIES.REACT,
+      TECHNOLOGIES.STORYBOOK,
+      TECHNOLOGIES.NODE,
+      TECHNOLOGIES.EXPRESS,
+      TECHNOLOGIES.TAILWIND,
+      TECHNOLOGIES.MATERIAL_UI,
+      TECHNOLOGIES.SWAGGER,
+      TECHNOLOGIES.DOCKER,
+      TECHNOLOGIES.KUBERNETES,
+    ],
+    description:
+    "OneStream Live is the pioneer in pre-recorded streaming. All-in-one live streaming solution that is ideal for creating, scheduling, and multistreaming professional-looking live streams (both real-time and recorded) on 45+ social media platforms and the web at once.",
+  features: [
+    "Streaming",
+    "Live Streaming",
+    "Scheduled Streaming",
+    "Pre-recorded Streaming",
+    "Hosted Live Page Streaming",
+    "24/7 Streaming",
+    "Multi Camera Live Streaming",
+    "External RTMP Encoder Streaming",
+    "Unified Chat",
+    "Microservices Architecture",
+  ],
+  },
   {
     imageSrc: "/ai-synapse-sales-platform.png",
     title: "AI Synapse Sales Platform",

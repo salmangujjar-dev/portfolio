@@ -73,7 +73,7 @@ const ProjectsScreen = () => {
               >
                 <Image
                   alt="Project"
-                  className="rounded-lg blur-[1px] object-cover w-full aspect-[4/3] group-hover:brightness-75 transition-all"
+                  className="rounded-lg blur-[1px] object-cover w-full aspect-[16/10] group-hover:brightness-75 transition-all"
                   height="400"
                   width="600"
                   src={item.imageSrc}
