@@ -46,7 +46,7 @@ const ParticlesBG = () => {
           },
           repulse: {
             distance: 200,
-            duration: 0.4,
+            duration: 1,
           },
         },
       },
@@ -68,7 +68,7 @@ const ParticlesBG = () => {
             default: OutMode.out,
           },
           random: false,
-          speed: 6,
+          speed: 4,
           straight: false,
         },
         number: {
