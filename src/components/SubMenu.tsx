@@ -62,7 +62,7 @@ const SubMenu = ({ children, className }: TSubMenu) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className={clsxm(
-              "absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-md flex flex-col divide-y-2 text-center text-black z-20"
+              "absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-md flex flex-col divide-y-2 text-center text-black z-10"
             )}
           >
             {NAVBAR_OPTIONS.map((item, index) => (
@@ -74,7 +74,7 @@ const SubMenu = ({ children, className }: TSubMenu) => {
                 {item.label}
                 <span
                   className={clsxm(
-                    "absolute -bottom-1 left-0 w-0 transition-all h-1 bg-indigo-400 group-hover:w-full z-20",
+                    "absolute -bottom-1 left-0 w-0 transition-all h-1 bg-indigo-400 group-hover:w-full",
                     { ["w-full"]: pathname === item.href }
                   )}
                 />

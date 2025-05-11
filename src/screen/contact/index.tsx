@@ -22,7 +22,6 @@ const ContactScreen = () => {
       transition={{ duration: 1, ease: easeInOut }}
       className="w-full md:px-8 px-2 lg:px-32 xl:px-48 py-6 flex flex-col items-center gap-y-10 justify-center"
     >
-      <ToastContainer position="top-right" />
       <RoughNotation
         show
         type={"highlight"}
@@ -68,28 +67,28 @@ const ContactScreen = () => {
       >
         <Form className="flex flex-col gap-y-5 w-full max-w-96">
           <FieldArea
-            component={FieldArea.componenet}
+            component={FieldArea.component}
             type="text"
             name="fullName"
             label="Full Name"
             required
           />
           <FieldArea
-            component={FieldArea.componenet}
+            component={FieldArea.component}
             type="email"
             name="email"
             label="Email"
             required
           />
           <FieldArea
-            component={FieldArea.componenet}
+            component={FieldArea.component}
             type="text"
             name="subject"
             label="Subject"
             required
           />
           <FieldArea
-            component={FieldArea.componenet}
+            component={FieldArea.component}
             type="textarea"
             name="body"
             label="Body"

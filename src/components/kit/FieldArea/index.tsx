@@ -7,7 +7,7 @@ const FieldArea = ({ ...props }: FieldAttributes<any>) => {
   return <Field {...props} />;
 };
 
-FieldArea.componenet = (props: FieldAttributes<any>) => {
+FieldArea.component = (props: FieldAttributes<any>) => {
   const { type, label, className, required, field, form, ...rest } = props;
 
   const { setFieldValue } = form;
