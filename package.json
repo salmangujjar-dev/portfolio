@@ -7,11 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-images": "yarn svgr --out-dir src/assets/src src/assets/svgs --typescript --ignore-existing",
-    "type-check": "tsc --pretty --noEmit --incremental"
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --incremental false --noEmit --pretty",
+    "build-images": "svgr --out-dir src/assets/svgs src/assets/svgs/src --typescript --ignore-existing --ref --jsx-runtime automatic --no-dimensions"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.8.1",
     "clsx": "^2.0.0",
     "dotenv": "^16.3.1",
     "formik": "^2.4.5",

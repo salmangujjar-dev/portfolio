@@ -110,7 +110,7 @@ const Hero = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9, x: "-5px", y: "5px" }}
               type="button"
-              className="flex items-center gap-x-2 py-2.5 hover:text-indigo-400 hover:border-indigo-400 px-4 ml-3 border-2 dark:border-white rounded-md"
+              className="flex items-center gap-x-2 z-[1] py-2.5 hover:text-indigo-400 hover:border-indigo-400 px-4 ml-3 border-2 dark:border-white rounded-md"
             >
               Resume <FaArrowRightLong />
             </motion.a>
@@ -133,7 +133,7 @@ const Hero = () => {
           <Image
             src="/hero_avatar.png"
             alt="hero_avatar"
-            className="w-96 select-none z-20"
+            className="w-96 select-none"
             width={500}
             height={500}
             priority
