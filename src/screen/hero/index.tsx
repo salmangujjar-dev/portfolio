@@ -11,8 +11,11 @@ import { SocialIcon } from "react-social-icons";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 import { EMAIL, SOCIALS, defaultProps } from "@utils/constants";
+import useMounted from "../../hooks/useMounted";
 
 const Hero = () => {
+  const isMounted = useMounted();
+
   const wrapInImportantTag = useCallback(
     (
       text: string,
@@ -21,7 +24,7 @@ const Hero = () => {
     ) => {
       return (
         <RoughNotation
-          show
+          show={isMounted}
           type={type}
           animationDelay={1250}
           animationDuration={2000}
@@ -31,7 +34,7 @@ const Hero = () => {
         </RoughNotation>
       );
     },
-    []
+    [isMounted]
   );
 
   return (
