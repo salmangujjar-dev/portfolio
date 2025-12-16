@@ -16,6 +16,7 @@
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
+    "@vercel/analytics": "^1.6.1",
     "clsx": "^2.0.0",
     "dotenv": "^16.3.1",
     "formik": "^2.4.5",
