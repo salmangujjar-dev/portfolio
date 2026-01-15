@@ -11,8 +11,7 @@ const nextConfig = {
         optimizePackageImports: [
             'react-icons',
             '@nextui-org/react',
-            'framer-motion',
-            'react-social-icons',
+            'framer-motion'
         ],
     },
 }
