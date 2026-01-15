@@ -2,17 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import dynamic from "next/dynamic";
-
 import Header from "@components/Header";
 import Footer from "@components/Footer";
+import Analytics from "@components/Analytics";
 import { clsxm } from "@utils/clsxm";
 import { Providers } from "./provider";
-
-const Analytics = dynamic(
-  () => import("@vercel/analytics/react").then((mod) => mod.Analytics),
-  { ssr: false }
-);
 
 const inter = Inter({
   subsets: ["latin"],
