@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import { Analytics } from "@vercel/analytics/next";
-
 import Header from "@components/Header";
 import Footer from "@components/Footer";
+import Analytics from "@components/Analytics";
 import { clsxm } from "@utils/clsxm";
 import { Providers } from "./provider";
 

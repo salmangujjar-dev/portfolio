@@ -1,7 +1,9 @@
+import { cache } from "react";
 const nodemailer = require("nodemailer");
 
-export async function sendMail(subject: string, email: string, body: string) {
-  var transporter = nodemailer.createTransport({
+// Cache transporter creation per request to avoid recreating it
+const getTransporter = cache(() => {
+  return nodemailer.createTransport({
     port: 465,
     service: "gmail",
     auth: {
@@ -10,6 +12,10 @@ export async function sendMail(subject: string, email: string, body: string) {
     },
     secure: true,
   });
+});
+
+export async function sendMail(subject: string, email: string, body: string) {
+  const transporter = getTransporter();
 
   await new Promise((resolve, reject) => {
     transporter.verify(function (error: {}, success: {}) {
@@ -23,7 +29,7 @@ export async function sendMail(subject: string, email: string, body: string) {
     });
   });
 
-  var mailOptions = {
+  const mailOptions = {
     from: process.env.NODEMAILER_EMAIL,
     to: process.env.NODEMAILER_EMAIL,
     subject: `${subject} <${email}>`,
