@@ -25,9 +25,11 @@ export default function ThemeProvider({ children }: PropsWithChildren) {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    setValue("theme", newTheme);
+    setTheme((current) => {
+      const newTheme = current === "dark" ? "light" : "dark";
+      setValue("theme", newTheme);
+      return newTheme;
+    });
   };
 
   useEffect(() => {

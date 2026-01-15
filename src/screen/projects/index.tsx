@@ -16,7 +16,7 @@ const ProjectsScreen = () => {
   const [isOpen, setIsOpen] = useState<number | undefined>(undefined);
 
   const handleToggle = (index: number) => {
-    setIsOpen(isOpen === undefined ? index : undefined);
+    setIsOpen((current) => (current === undefined ? index : undefined));
   };
 
   const isMd = useMediaQuery(EScreenType.md);

@@ -27,7 +27,7 @@ FieldArea.component = (props: FieldAttributes<any>) => {
           onChange={(e) => setFieldValue(field.name, e.target.value)}
           maxLength={50}
           isInvalid={error}
-          errorMessage={error && `Please enter a valid ${field.name}`}
+          errorMessage={error ? `Please enter a valid ${field.name}` : undefined}
         />
       );
     case "email":
@@ -43,7 +43,7 @@ FieldArea.component = (props: FieldAttributes<any>) => {
           onChange={(e) => setFieldValue(field.name, e.target.value)}
           maxLength={100}
           isInvalid={error}
-          errorMessage={error && "Please enter a valid email"}
+          errorMessage={error ? "Please enter a valid email" : undefined}
         />
       );
     case "textarea":
@@ -63,7 +63,7 @@ FieldArea.component = (props: FieldAttributes<any>) => {
           onChange={(e) => setFieldValue(field.name, e.target.value)}
           maxLength={150}
           isInvalid={error}
-          errorMessage={error && "Please enter a valid body"}
+          errorMessage={error ? "Please enter a valid body" : undefined}
         />
       );
   }

@@ -23,7 +23,7 @@ export function useMediaQuery(query: EScreenType): boolean {
     return false;
   };
 
-  const [matches, setMatches] = useState<boolean>(getMatches());
+  const [matches, setMatches] = useState<boolean>(() => getMatches());
 
   function handleChange() {
     setMatches(getMatches());

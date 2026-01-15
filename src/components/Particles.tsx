@@ -92,17 +92,15 @@ const ParticlesBG = () => {
     [isDarkMode]
   );
 
-  if (init) {
-    return (
-      <Particles
-        id="tsparticles"
-        className="absolute inset-0"
-        options={options}
-      />
-    );
-  }
+  if (!init) return null;
 
-  return <></>;
+  return (
+    <Particles
+      id="tsparticles"
+      className="absolute inset-0"
+      options={options}
+    />
+  );
 };
 
 export default ParticlesBG;
