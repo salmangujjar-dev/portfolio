@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { clsxm } from "@utils/clsxm";
+import { cn } from "@lib/utils";
 
 type Props = {
   children: ReactNode;
@@ -9,14 +9,14 @@ type Props = {
 
 const Badge = ({ children, className }: Props) => {
   return (
-    <div
-      className={clsxm(
-        className,
-        "select-none rounded-full bg-indigo-600 font-semibold shadow-lg py-1.5 px-3 max-w-fit text-sm"
+    <span
+      className={cn(
+        "inline-flex select-none items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium tracking-wide text-accent",
+        className
       )}
     >
       {children}
-    </div>
+    </span>
   );
 };
 

@@ -1,108 +1,113 @@
 "use client";
 
-import React, { Fragment, useState } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { useMemo, useState } from "react";
+import { LayoutGroup } from "motion/react";
 
-import ModalKit from "@components/kit/Modal/Project";
+import BentoProjectCard from "@components/projects/BentoProjectCard";
+import ProjectDetailModal from "@components/projects/ProjectDetailModal";
+import ProjectFilterPills from "@components/projects/ProjectFilterPills";
+import SectionHeader from "@components/SectionHeader";
+
 import { PROJECTS } from "@utils/constants";
-import { EScreenType, useMediaQuery } from "../../hooks/useMediaQuery";
-import useMounted from "../../hooks/useMounted";
+import { TProjects } from "@utils/types";
+import { cn } from "@lib/utils";
 
-import { FaChevronRight as ChevronRightIcon } from "react-icons/fa";
-import { RoughNotation } from "react-rough-notation";
+const FILTER_ALL = "All";
+const FEATURED_TITLE = "OneStream Live";
+
+const buildFilterOptions = () => {
+  const labels = new Set<string>();
+  PROJECTS.forEach((p) => p.technologies.forEach((t) => labels.add(t.label)));
+  return [FILTER_ALL, ...Array.from(labels).sort((a, b) => a.localeCompare(b))];
+};
 
 const ProjectsScreen = () => {
-  const [isOpen, setIsOpen] = useState<number | undefined>(undefined);
+  const [filter, setFilter] = useState(FILTER_ALL);
+  const [viewing, setViewing] = useState<TProjects | null>(null);
 
-  const handleToggle = (index: number) => {
-    setIsOpen((current) => (current === undefined ? index : undefined));
-  };
+  const options = useMemo(() => buildFilterOptions(), []);
 
-  const isMd = useMediaQuery(EScreenType.md);
-  const mounted = useMounted();
+  const filtered = useMemo(() => {
+    if (filter === FILTER_ALL) return PROJECTS;
+    return PROJECTS.filter((p) =>
+      p.technologies.some((t) => t.label === filter)
+    );
+  }, [filter]);
+
+  const ordered = useMemo(() => {
+    if (filtered.length === 0) return [];
+    const main =
+      filtered.find((p) => p.title === FEATURED_TITLE) ?? filtered[0];
+    return [main, ...filtered.filter((p) => p !== main)];
+  }, [filtered]);
 
   return (
-    <motion.div
-      initial={{ scale: 0.4, opacity: 0.5 }}
-      animate={{ scale: [0.4, 1.2, 1], opacity: 1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
-      className="w-full md:px-8 px-2 lg:px-32 xl:px-48 py-6 flex flex-col items-center gap-y-10 justify-center"
+    <section
+      id="projects"
+      className="relative w-full px-6 py-24 md:px-12 md:py-32 lg:px-24 xl:px-40"
     >
-      <RoughNotation
-        show
-        type={"highlight"}
-        animationDelay={1200}
-        animationDuration={1000}
-        color="#818cf8"
-      >
-        <h1 className="font-montserrat text-2xl md:text-5xl text-center tracking-[0.1rem] md:tracking-[0.2rem] font-bold text-white uppercase">
-          Projects
-        </h1>
-      </RoughNotation>
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0.5 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.5, opacity: 0.5 }}
-        transition={{ duration: 1, ease: "backInOut" }}
-        className="container grid gap-6 px-4 md:grid-cols-2 md:gap-8 lg:gap-10 xl:grid-cols-3 xl:max-w-6xl xl:mx-auto overflow-hidden"
-      >
-        {mounted &&
-          PROJECTS.map((item, index) => (
-            <Fragment key={index}>
-              <motion.div
-                initial={{
-                  x: isMd ? 500 : 0,
-                  y: isMd ? 0 : 500,
-                  opacity: 0.5,
-                }}
-                animate={{
-                  x: 0,
-                  y: 0,
-                  opacity: 1,
-                }}
-                exit={{ x: 500, opacity: 0.5 }}
-                transition={{
-                  delay: (index + 1) / PROJECTS.length,
-                  duration: 1,
-                  ease: "backInOut",
-                  type: "spring",
-                }}
-                className="relative group cursor-pointer text-white"
-                onClick={() => handleToggle(index)}
-              >
-                <Image
-                  alt="Project"
-                  className="rounded-lg blur-[1px] object-cover w-full aspect-[16/10] group-hover:brightness-75 transition-all"
-                  height="400"
-                  width="600"
-                  src={item.imageSrc}
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-center bg-black/40 rounded-lg group-hover:opacity-0 transition-opacity">
-                  <h3 className="text-2xl font-bold tracking-widest">
-                    {item.title}
-                  </h3>
-                </div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-center opacity-0 rounded-lg group-hover:opacity-100 transition-opacity">
-                  <p className="text-sm font-medium select-none line-clamp-4">
-                    {item.description}
-                  </p>
-                  <div className="inline-flex items-center underline hover:text-indigo-600 cursor-pointer">
-                    View Project
-                    <ChevronRightIcon className="w-4 h-4 ml-1 inline-block text-indigo-600" />
-                  </div>
-                </div>
-              </motion.div>
-              <ModalKit
-                key={`modal-${index}`}
-                onClose={() => handleToggle(index)}
-                isOpen={isOpen === index}
-                data={item}
+      <LayoutGroup>
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-stretch gap-10 md:gap-14">
+          <div className="flex flex-col gap-8">
+            <SectionHeader
+              align="left"
+              eyebrow="Work"
+              title={
+                <>
+                  Projects & <span className="text-accent">builds</span>
+                </>
+              }
+              description="A mix of product work, platforms, and experiments — with emphasis on the stack that made each one real."
+            />
+            <div className="max-w-3xl">
+              <ProjectFilterPills
+                options={options}
+                value={filter}
+                onChange={setFilter}
               />
-            </Fragment>
-          ))}
-      </motion.div>
-    </motion.div>
+            </div>
+          </div>
+
+          {ordered.length === 0 ? (
+            <p className="text-sm text-muted-foreground">
+              No projects match that stack. Try &quot;{FILTER_ALL}&quot; to see
+              everything.
+            </p>
+          ) : (
+            <ul
+              className="grid w-full list-none grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-4 lg:gap-5"
+            >
+              {ordered.map((p, i) => {
+                const isFeatured = i === 0 && ordered.length > 1;
+                return (
+                  <li
+                    key={p.title}
+                    className={cn(
+                      isFeatured && "md:col-span-2"
+                    )}
+                  >
+                    <BentoProjectCard
+                      project={p}
+                      isOpen={viewing?.title === p.title}
+                      isFeatured={isFeatured}
+                      onSelect={setViewing}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+
+        {viewing && (
+          <ProjectDetailModal
+            key={viewing.title}
+            project={viewing}
+            onExited={() => setViewing(null)}
+          />
+        )}
+        </div>
+      </LayoutGroup>
+    </section>
   );
 };
 
