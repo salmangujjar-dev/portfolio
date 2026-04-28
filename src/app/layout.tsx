@@ -17,9 +17,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Salman Ahmed | Portfolio",
   description:
-    "Full-stack developer portfolio showcasing projects, skills, and experience",
+    "Full-stack engineer portfolio showcasing projects, skills, and experience",
   keywords: [
-    "Full-stack developer",
+    "Full-stack engineer",
     "Web Development",
     "React",
     "Next.js",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Salman Ahmed | Portfolio",
     description:
-      "Full-stack developer portfolio showcasing projects, skills, and experience",
+      "Full-stack engineer portfolio showcasing projects, skills, and experience",
     type: "website",
     locale: "en_US",
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Salman Ahmed | Portfolio",
     description:
-      "Full-stack developer portfolio showcasing projects, skills, and experience",
+      "Full-stack engineer portfolio showcasing projects, skills, and experience",
   },
   icons: {
     icon: "/favicon.svg",

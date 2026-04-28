@@ -23,23 +23,23 @@ export const NAVBAR_OPTIONS = [
 
 export const CAREER: TCareer[] = [
   {
-    role: "Senior Full Stack Developer",
+    role: "Senior Full Stack Engineer",
     company: "OneStream Live",
     companyLink: "https://onestream.live/",
     duration: "2024-Present",
     details:
-      "Working as a Senior Full Stack Developer, pioneering the development of OneStream Frontend 2.0, and Backend 3.0, following the best practices, SOLID, and DRY principle.",
+      "Working as a Senior Full Stack Engineer, pioneering the development of OneStream Frontend 2.0, and Backend 3.0, following the best practices, SOLID, and DRY principle.",
   },
   {
-    role: "Full Stack Developer",
+    role: "Full Stack Engineer",
     company: "AI Synapse",
     companyLink: "https://www.ai-synapse.io",
     duration: "2024-2025",
     details:
-      "Working as a Full Stack Developer, I am responsible for both the development and deployment of new features. My role involves designing and implementing features and to optimize system performance and ensure efficient feature execution. I am dedicated to selecting and applying the best approaches to enhance backend functionality, ensuring robust and scalable solutions that meet the needs of our applications.",
+      "Working as a Full Stack Engineer, I am responsible for both the development and deployment of new features. My role involves designing and implementing features and to optimize system performance and ensure efficient feature execution. I am dedicated to selecting and applying the best approaches to enhance backend functionality, ensuring robust and scalable solutions that meet the needs of our applications.",
   },
   {
-    role: "Full Stack Developer",
+    role: "Full Stack Engineer",
     company: "Devsinc",
     companyLink: "https://www.devsinc.com",
     duration: "2023-2024",
@@ -52,7 +52,7 @@ export const CAREER: TCareer[] = [
     companyLink: "https://www.i2cinc.com",
     duration: "2022-2023",
     details:
-      "As part of a dynamic team, I contributed to the development of new schedulers for fintech applications, overseeing the overhaul of legacy code to enhance performance and security. Additionally, I spearheaded the creation of new tools tailored for C-level management. Serving as the Team Lead, I provided crucial guidance to a team of multiple developers, ensuring cohesive progress and achievement of objectives.",
+      "As part of a dynamic team, I contributed to the development of new schedulers for fintech applications, overseeing the overhaul of legacy code to enhance performance and security. Additionally, I spearheaded the creation of new tools tailored for C-level management. Serving as the Team Lead, I provided crucial guidance to a team of multiple engineers, ensuring cohesive progress and achievement of objectives.",
   },
   {
     role: "Contractor",

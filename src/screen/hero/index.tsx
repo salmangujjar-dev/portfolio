@@ -67,7 +67,7 @@ const Hero = () => {
             className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground"
           >
             <span className="block h-px w-8 bg-muted-foreground/60" />
-            Full-Stack Developer
+            Full-Stack Engineer
           </motion.div>
 
           <h1 className="font-display text-fluid-4xl font-semibold leading-[1.02] tracking-tightest text-balance md:text-fluid-5xl">
@@ -86,7 +86,7 @@ const Hero = () => {
             transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-xl text-fluid-base leading-relaxed text-muted-foreground text-pretty"
           >
-            Full-stack developer with{" "}
+            Full-stack engineer with{" "}
             <span className="text-foreground">5+ years</span> across enterprise
             and startups. I build polished products with{" "}
             <span className="text-foreground">

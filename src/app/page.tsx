@@ -8,7 +8,7 @@ import ContactScreen from "@screen/contact";
 export const metadata: Metadata = {
   title: "Salman Ahmed | Portfolio",
   description:
-    "Full-stack developer portfolio — projects, career and contact, on a single page.",
+    "Full-stack Engineer portfolio — projects, career and contact, on a single page.",
 };
 
 export default function Home() {
