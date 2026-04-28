@@ -20,6 +20,7 @@ import { Button } from "@components/ui/button";
 
 import { EMAIL, SOCIALS } from "@utils/constants";
 import { scrollToSection } from "@lib/lenis";
+import { useTheme } from "../../app/providers/ThemeProvider";
 
 const NoiseField = dynamic(() => import("@components/hero/NoiseField"), {
   ssr: false,
@@ -28,6 +29,10 @@ const NoiseField = dynamic(() => import("@components/hero/NoiseField"), {
 
 const Hero = () => {
   const reduced = useReducedMotion();
+
+  const { theme } = useTheme()
+
+
   const sectionRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -45,7 +50,9 @@ const Hero = () => {
       ref={sectionRef}
       className="relative isolate flex min-h-[calc(100vh-5rem)] w-full flex-col overflow-hidden"
     >
-      <NoiseField />
+      {theme === "dark" && (
+        <NoiseField />
+      )}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/10 to-background" />
 
       <motion.div
@@ -80,7 +87,7 @@ const Hero = () => {
             className="max-w-xl text-fluid-base leading-relaxed text-muted-foreground text-pretty"
           >
             Full-stack developer with{" "}
-            <span className="text-foreground">4+ years</span> across enterprise
+            <span className="text-foreground">5+ years</span> across enterprise
             and startups. I build polished products with{" "}
             <span className="text-foreground">
               React, Next.js, Node, Nest, Python
@@ -94,7 +101,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-3 md:gap-4"
+            className="flex flex-wrap items-center gap-3 md:gap-4 max-md:justify-center"
           >
             <MagneticButton
               onClick={() => scrollToSection("#projects")}

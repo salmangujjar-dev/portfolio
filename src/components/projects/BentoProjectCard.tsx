@@ -12,6 +12,7 @@ type Props = {
   project: TProjects;
   isOpen: boolean;
   isFeatured: boolean;
+  isHighlighted?: boolean;
   onSelect: (p: TProjects) => void;
 };
 
@@ -21,6 +22,7 @@ const BentoProjectCard = ({
   project,
   isOpen,
   isFeatured,
+  isHighlighted = false,
   onSelect,
 }: Props) => {
   const reduced = useReducedMotion();
@@ -47,6 +49,7 @@ const BentoProjectCard = ({
       style={{ perspective: reduced ? "none" : "1000px" }}
     >
       <div
+        className="h-full"
         style={
           reduced
             ? undefined
@@ -61,11 +64,12 @@ const BentoProjectCard = ({
         <button
           type="button"
           onClick={() => onSelect(project)}
-          className="group relative block w-full text-left"
+          className="group relative block w-full h-full text-left"
         >
           <div
             className={cn(
-              "overflow-hidden rounded-2xl border border-border/70 bg-card/30 shadow-sm",
+              "h-full overflow-hidden rounded-2xl border border-border/70 bg-card/30 shadow-sm flex flex-col",
+              isHighlighted && "border-accent/50 shadow-glow",
               "transition-shadow duration-300",
               "group-hover:border-accent/40 group-hover:shadow-glow"
             )}
@@ -93,7 +97,12 @@ const BentoProjectCard = ({
                 />
               )}
             </div>
-            <div className="flex flex-col gap-2 p-4 sm:p-5">
+            <div className="flex flex-col gap-2 p-4 sm:p-5 my-auto">
+              {isHighlighted && (
+                <span className="inline-flex w-fit rounded-full border border-accent/40 bg-accent/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+                  Highlight
+                </span>
+              )}
               <h3
                 className={cn(
                   "font-display font-semibold tracking-editorial",
