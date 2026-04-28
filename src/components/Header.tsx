@@ -1,61 +1,84 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState, type MouseEvent } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion } from "motion/react";
+import React, { useEffect, useRef, useState, type MouseEvent } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { motion } from 'motion/react';
 
-import { EScreenType, useMediaQuery } from "@hooks/useMediaQuery";
-import useMounted from "@hooks/useMounted";
+import { EScreenType, useMediaQuery } from '@hooks/useMediaQuery';
+import useMounted from '@hooks/useMounted';
 
-import { SCharacter } from "@assets/index";
-import { NAVBAR_OPTIONS } from "@utils/constants";
-import { scrollToSection } from "@lib/lenis";
-import { cn } from "@lib/utils";
+import { SCharacter } from '@assets/index';
+import { NAVBAR_OPTIONS } from '@utils/constants';
+import { getLenis, scrollToSection } from '@lib/lenis';
+import { cn } from '@lib/utils';
 
-import { MdMenuOpen } from "react-icons/md";
-import { ThemeSwitcher } from "./ThemeSwitcher";
-import SubMenu from "./SubMenu";
+import { MdMenuOpen } from 'react-icons/md';
+import { ThemeSwitcher } from './ThemeSwitcher';
+import SubMenu from './SubMenu';
 
-const ANCHOR_IDS = NAVBAR_OPTIONS.map((o) => o.href.replace("/#", ""));
+const ANCHOR_IDS = NAVBAR_OPTIONS.map((o) => o.href.replace('/#', ''));
 
 const Header = () => {
   const pathname = usePathname();
   const isMd = useMediaQuery(EScreenType.md);
   const mounted = useMounted();
 
-  const [activeId, setActiveId] = useState<string>("hero");
+  const [activeId, setActiveId] = useState<string>('hero');
+  
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const sections = ANCHOR_IDS.map((id) => document.getElementById(id)).filter(
-      (el): el is HTMLElement => Boolean(el)
-    );
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) setActiveId(visible[0].target.id);
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
-    );
-
-    sections.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+  
+    const getSections = () =>
+      ANCHOR_IDS.map((id) => document.getElementById(id)).filter(
+        (el): el is HTMLElement => Boolean(el)
+      );
+  
+    let lastScrollY = 0; // ← here
+  
+    const onScroll = ({ scroll }: { scroll: number }) => {
+      const sections = getSections();
+      if (!sections.length) return;
+  
+      const scrollingUp = scroll < lastScrollY;
+      lastScrollY = scroll; // ← updated each frame
+  
+      const triggerY = scrollingUp
+        ? window.innerHeight * 0.8
+        : window.innerHeight * 0.35;
+  
+      const passed = sections.filter(
+        (s) => s.getBoundingClientRect().top <= triggerY
+      );
+  
+      const active = passed.length > 0 ? passed[passed.length - 1] : sections[0];
+      setActiveId(active.id);
+    };
+  
+    const lenis = getLenis();
+  
+    if (lenis) {
+      lastScrollY = lenis.scroll;
+      lenis.on("scroll", onScroll);
+      onScroll({ scroll: lenis.scroll });
+      return () => lenis.off("scroll", onScroll);
+    }
+  
+    window.addEventListener("scroll", onScroll as any, { passive: true });
+    onScroll({ scroll: window.scrollY });
+    return () => window.removeEventListener("scroll", onScroll as any);
   }, [mounted]);
 
   const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.startsWith("/#")) return;
-    if (typeof window === "undefined") return;
-    if (window.location.pathname !== "/") return;
+    if (!href.startsWith('/#')) return;
+    if (typeof window === 'undefined') return;
+    if (window.location.pathname !== '/') return;
 
     e.preventDefault();
     const hash = href.slice(1);
     scrollToSection(hash);
-    window.history.replaceState(null, "", href);
+    window.history.replaceState(null, '', href);
     setActiveId(hash.slice(1));
   };
 
@@ -69,7 +92,7 @@ const Header = () => {
       >
         <Link
           href="/#hero"
-          onClick={(e) => handleNavClick(e, "/#hero")}
+          onClick={(e) => handleNavClick(e, '/#hero')}
           className="flex items-center gap-1 rounded-full px-2 py-1 tracking-wide"
           aria-label="Home"
         >
@@ -80,7 +103,7 @@ const Header = () => {
         {mounted && isMd && (
           <nav className="flex items-center gap-1">
             {NAVBAR_OPTIONS.map((item) => {
-              const id = item.href.replace("/#", "");
+              const id = item.href.replace('/#', '');
               const isActive = activeId === id;
               return (
                 <Link
@@ -88,10 +111,10 @@ const Header = () => {
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
-                    "relative px-3 py-1.5 text-sm font-medium tracking-wide transition-colors",
+                    'relative px-3 py-1.5 text-sm font-medium tracking-wide transition-colors',
                     isActive
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? 'text-foreground'
+                      : 'text-muted-foreground hover:text-foreground',
                   )}
                 >
                   {item.label}
@@ -99,7 +122,7 @@ const Header = () => {
                     <motion.span
                       layoutId="nav-active"
                       transition={{
-                        type: "spring",
+                        type: 'spring',
                         stiffness: 380,
                         damping: 30,
                       }}
