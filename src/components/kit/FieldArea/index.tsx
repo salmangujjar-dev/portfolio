@@ -1,72 +1,91 @@
-import { Input, Textarea } from "@nextui-org/react";
 import { Field, FieldAttributes } from "formik";
 
-import { clsxm } from "@utils/clsxm";
+import { Input } from "@components/ui/input";
+import { Textarea } from "@components/ui/textarea";
+import { cn } from "@lib/utils";
 
 const FieldArea = ({ ...props }: FieldAttributes<any>) => {
   return <Field {...props} />;
 };
 
+const Label = ({
+  htmlFor,
+  required,
+  children,
+}: {
+  htmlFor: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) => (
+  <label
+    htmlFor={htmlFor}
+    className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground"
+  >
+    {children}
+    {required && <span className="text-accent ml-1">*</span>}
+  </label>
+);
+
 FieldArea.component = (props: FieldAttributes<any>) => {
   const { type, label, className, required, field, form, ...rest } = props;
-
   const { setFieldValue } = form;
-
   const error = form.error?.[field.name];
+  const errorMsg = error ? `Please enter a valid ${field.name}` : undefined;
 
-  switch (type) {
-    case "text":
-      return (
-        <Input
-          type={type}
-          label={label}
-          variant="bordered"
-          className={clsxm(className)}
-          isRequired={required}
-          value={field.value}
-          onChange={(e) => setFieldValue(field.name, e.target.value)}
-          maxLength={50}
-          isInvalid={error}
-          errorMessage={error ? `Please enter a valid ${field.name}` : undefined}
-        />
-      );
-    case "email":
-      return (
-        <Input
-          type={type}
-          label={label}
-          placeholder="name@example.com"
-          variant="bordered"
-          className={clsxm(className)}
-          isRequired={required}
-          value={field.value}
-          onChange={(e) => setFieldValue(field.name, e.target.value)}
-          maxLength={100}
-          isInvalid={error}
-          errorMessage={error ? "Please enter a valid email" : undefined}
-        />
-      );
-    case "textarea":
-      return (
+  if (type === "textarea") {
+    return (
+      <div className="flex flex-col gap-2">
+        <Label htmlFor={field.name} required={required}>
+          {label}
+        </Label>
         <Textarea
-          type={type}
-          label={label}
-          placeholder="..."
-          variant="bordered"
-          disableAnimation
-          disableAutosize
-          classNames={{
-            input: clsxm("resize-y !max-h-[12rem] !min-h-[8rem]"),
-          }}
-          isRequired={required}
+          id={field.name}
+          name={field.name}
           value={field.value}
           onChange={(e) => setFieldValue(field.name, e.target.value)}
           maxLength={150}
-          isInvalid={error}
-          errorMessage={error ? "Please enter a valid body" : undefined}
+          required={required}
+          aria-invalid={!!error}
+          className={cn(
+            "resize-y max-h-48 min-h-[8rem]",
+            error && "border-destructive focus-visible:ring-destructive",
+            className
+          )}
+          {...rest}
         />
-      );
+        {errorMsg && (
+          <span className="text-xs text-destructive">{errorMsg}</span>
+        )}
+      </div>
+    );
   }
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Label htmlFor={field.name} required={required}>
+        {label}
+      </Label>
+      <Input
+        id={field.name}
+        name={field.name}
+        type={type}
+        value={field.value}
+        onChange={(e) => setFieldValue(field.name, e.target.value)}
+        maxLength={type === "email" ? 100 : 50}
+        required={required}
+        placeholder={type === "email" ? "name@example.com" : undefined}
+        aria-invalid={!!error}
+        className={cn(
+          error && "border-destructive focus-visible:ring-destructive",
+          className
+        )}
+        {...rest}
+      />
+      {errorMsg && (
+        <span className="text-xs text-destructive">{errorMsg}</span>
+      )}
+    </div>
+  );
 };
 
 export default FieldArea;

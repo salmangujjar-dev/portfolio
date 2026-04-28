@@ -5,7 +5,7 @@ import "./globals.css";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Analytics from "@components/Analytics";
-import { clsxm } from "@utils/clsxm";
+import { cn } from "@lib/utils";
 import { Providers } from "./provider";
 
 const inter = Inter({
@@ -49,23 +49,43 @@ export const metadata: Metadata = {
   },
 };
 
+const themeInitScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+    var root = document.documentElement;
+    if (theme === 'dark') root.classList.add('dark');
+    root.style.colorScheme = theme;
+  } catch (e) {
+    document.documentElement.classList.add('dark');
+    document.documentElement.style.colorScheme = 'dark';
+  }
+})();
+`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={cn("dark", inter.variable)} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+      </head>
       <body
-        className={clsxm(
+        className={cn(
           inter.className,
-          "min-h-screen relative bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300"
+          "min-h-screen relative bg-background text-foreground antialiased selection:bg-accent/30"
         )}
       >
         <Providers>
-          <div className="min-h-screen flex flex-col">
+          <div className="relative min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow flex items-center">{children}</main>
+            <main className="flex-grow flex flex-col">{children}</main>
             <Footer />
           </div>
         </Providers>

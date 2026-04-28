@@ -5,19 +5,19 @@ import { TECHNOLOGIES } from "./technology-const";
 export const NAVBAR_OPTIONS = [
   {
     label: "Home",
-    href: "/",
+    href: "/#hero",
   },
   {
     label: "Career",
-    href: "/career",
+    href: "/#career",
   },
   {
     label: "Projects",
-    href: "/projects",
+    href: "/#projects",
   },
   {
     label: "Contact",
-    href: "/contact",
+    href: "/#contact",
   },
 ];
 

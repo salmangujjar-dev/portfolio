@@ -1,85 +1,85 @@
+"use client";
+
 import React, {
   PropsWithChildren,
-  useState,
+  ReactElement,
   useEffect,
   useRef,
-  ReactElement,
+  useState,
+  type MouseEvent,
 } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
 
-import { motion, AnimatePresence } from "framer-motion";
-
-import { clsxm } from "@utils/clsxm";
+import { cn } from "@lib/utils";
 import { NAVBAR_OPTIONS } from "@utils/constants";
-import { EScreenType, useMediaQuery } from "../hooks/useMediaQuery";
+import { EScreenType, useMediaQuery } from "@hooks/useMediaQuery";
 
 type TSubMenu = PropsWithChildren<{
   className: string;
+  activeId?: string;
+  onNavClick?: (e: MouseEvent<HTMLAnchorElement>, href: string) => void;
 }>;
 
-const SubMenu = ({ children, className }: TSubMenu) => {
+const SubMenu = ({ children, className, activeId, onNavClick }: TSubMenu) => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   const isMd = useMediaQuery(EScreenType.md);
 
-  const pathname = usePathname();
-
-  const toggleSubMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (ref.current && !ref.current.contains(event.target as Node)) {
-      setIsOpen(false);
-    }
-  };
+  const toggle = () => setIsOpen((v) => !v);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleClickOutside = (event: globalThis.MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
     };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   useEffect(() => {
-    if (isMd) {
-      setIsOpen(false);
-    }
+    if (isMd) setIsOpen(false);
   }, [isMd]);
 
   return (
     <div className="relative" ref={ref}>
       {React.cloneElement(children as ReactElement, {
-        onClick: toggleSubMenu,
-        className: clsxm(className, { "-scale-x-100": isOpen }),
+        onClick: toggle,
+        className: cn(className, isOpen && "-scale-x-100"),
       })}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className={clsxm(
-              "absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-md flex flex-col divide-y-2 text-center text-black z-10"
-            )}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute right-0 top-full z-50 mt-3 flex min-w-[12rem] flex-col overflow-hidden rounded-xl border border-border bg-card p-1.5 shadow-glow"
           >
-            {NAVBAR_OPTIONS.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className="relative px-4 py-2 hover:bg-gray-200 cursor-pointer group"
-              >
-                {item.label}
-                <span
-                  className={clsxm(
-                    "absolute -bottom-1 left-0 w-0 transition-all h-1 bg-indigo-400 group-hover:w-full",
-                    { ["w-full"]: pathname === item.href }
+            {NAVBAR_OPTIONS.map((item) => {
+              const id = item.href.replace("/#", "");
+              const isActive = activeId === id;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => {
+                    onNavClick?.(e, item.href);
+                    setIsOpen(false);
+                  }}
+                  className={cn(
+                    "rounded-lg px-3 py-2 text-sm font-medium tracking-wide transition-colors",
+                    isActive
+                      ? "bg-muted text-foreground"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}
-                />
-              </Link>
-            ))}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>

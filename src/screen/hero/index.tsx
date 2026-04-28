@@ -1,148 +1,229 @@
 "use client";
 
-import React, { useCallback } from "react";
+import { useRef } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-
-import { motion } from "framer-motion";
-import { Typewriter } from "react-simple-typewriter";
-import { RoughNotation, RoughNotationProps } from "react-rough-notation";
-
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { SocialIcon } from "react-social-icons";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { ArrowRight, Mail } from "lucide-react";
 
-import { EMAIL, SOCIALS, defaultProps } from "@utils/constants";
-import useMounted from "../../hooks/useMounted";
+import TextReveal from "@components/hero/TextReveal";
+import MagneticButton from "@components/hero/MagneticButton";
+import ScrollHint from "@components/hero/ScrollHint";
+import TechMarquee from "@components/hero/TechMarquee";
+import { Button } from "@components/ui/button";
+
+import { EMAIL, SOCIALS } from "@utils/constants";
+import { scrollToSection } from "@lib/lenis";
+import { useTheme } from "../../app/providers/ThemeProvider";
+
+const NoiseField = dynamic(() => import("@components/hero/NoiseField"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const Hero = () => {
-  const isMounted = useMounted();
+  const reduced = useReducedMotion();
 
-  const wrapInImportantTag = useCallback(
-    (
-      text: string,
-      type: RoughNotationProps["type"] = "underline",
-      color: string = "#818cf8"
-    ) => {
-      return (
-        <RoughNotation
-          show={isMounted}
-          type={type}
-          animationDelay={1250}
-          animationDuration={2000}
-          color={color}
-        >
-          {text}
-        </RoughNotation>
-      );
-    },
-    [isMounted]
-  );
+  const { theme } = useTheme()
+
+
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const avatarY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const avatarScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <div className="flex-grow w-full justify-center md:justify-between py-2 md:px-8 px-2 lg:px-32 xl:px-48 flex flex-col gap-y-5 md:gap-y-0 md:flex-row items-center">
-      <div className="flex flex-col gap-y-1 order-2 md:order-1 items-center md:items-start">
-        <div className="flex gap-x-6 items-center">
-          <div className="w-[1rem] h-[0.1rem] bg-black dark:bg-white" />
-          <h5 className="uppercase text-cinder-light text-sm md:text-base lg:text-lg font-medium tracking-[0.5rem]">
-            <Typewriter
-              words={["My name is", "Mi nombre es", "Ismee", "Ich heiße"]}
-              loop={true}
-              cursor
-              cursorStyle="_"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1000}
-            />
-          </h5>
-        </div>{" "}
-        <RoughNotation
-          show
-          type={"highlight"}
-          animationDelay={1000}
-          animationDuration={1000}
-          color="#818cf8"
-        >
+    <section
+      id="hero"
+      ref={sectionRef}
+      className="relative isolate flex min-h-[calc(100vh-5rem)] w-full flex-col overflow-hidden"
+    >
+      {theme === "dark" && (
+        <NoiseField />
+      )}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/10 to-background" />
+
+      <motion.div
+        style={reduced ? undefined : { opacity: contentOpacity }}
+        className="relative z-10 flex flex-grow flex-col items-center justify-center gap-12 px-6 py-16 md:flex-row md:items-center md:justify-between md:gap-16 md:px-12 lg:px-24 xl:px-40"
+      >
+        <div className="flex max-w-2xl flex-col items-center gap-6 text-center md:items-start md:text-left">
           <motion.div
-            {...defaultProps.motion}
-            className="text-3xl text-wrap md:text-5xl lg:text-6xl font-bold space-x-2"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground"
           >
-            <span className="text-zinc-100">Salman</span>
-            <span className="text-indigo-800">Ahmed.</span>
+            <span className="block h-px w-8 bg-muted-foreground/60" />
+            Full-Stack Developer
           </motion.div>
-        </RoughNotation>
-        <div className="mt-6 flex flex-col gap-y-8">
-          <motion.span
-            {...defaultProps.motion}
-            transition={{ duration: 1.2 }}
-            className="block text-center md:text-start max-w-[30rem] text-base lg:text-lg font-normal leading-5 md:leading-7 text-cinder-light"
+
+          <h1 className="font-display text-fluid-4xl font-semibold leading-[1.02] tracking-tightest text-balance md:text-fluid-5xl">
+            <TextReveal text="Salman" delay={0.15} />
+            <br />
+            <TextReveal
+              text="Ahmed."
+              delay={0.5}
+              charClassName="text-accent"
+            />
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-xl text-fluid-base leading-relaxed text-muted-foreground text-pretty"
           >
-            Full-stack developer with more than{" "}
-            {wrapInImportantTag("4+ years", "box")} of experience in enterprise
-            companies and startups. Proficient in{" "}
-            {wrapInImportantTag("JavaScript")},{" "}
-            {wrapInImportantTag("TypeScript")}, {wrapInImportantTag("React.js")}
-            , {wrapInImportantTag("Next.js")}, {wrapInImportantTag("Nest.js")},{" "}
-            {wrapInImportantTag("Node.js")}, {wrapInImportantTag("Fastify")},{" "}
-            {wrapInImportantTag("Java")},{wrapInImportantTag("Crystal")},{" "}
-            {wrapInImportantTag("Python")},{wrapInImportantTag("Flutter")},{" "}
-            {wrapInImportantTag("Tailwind CSS")},{" "}
-            {wrapInImportantTag("Material UI")}, and etc. Hands on experience on{" "}
-            {wrapInImportantTag("Microservices")} and{" "}
-            {wrapInImportantTag("Monolith")} architecure.
-          </motion.span>
-          <div className="flex flex-wrap justify-center md:justify-start items-center gap-x-2">
-            {SOCIALS.map((item, index) => (
+            Full-stack developer with{" "}
+            <span className="text-foreground">5+ years</span> across enterprise
+            and startups. I build polished products with{" "}
+            <span className="text-foreground">
+              React, Next.js, Node, Nest, Python
+            </span>{" "}
+            and ship them on{" "}
+            <span className="text-foreground">microservice & monolith</span>{" "}
+            architectures.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center gap-3 md:gap-4 max-md:justify-center"
+          >
+            <MagneticButton
+              onClick={() => scrollToSection("#projects")}
+              className="bg-accent/10 hover:bg-accent/15"
+            >
+              View Projects
+              <ArrowRight className="h-4 w-4" />
+            </MagneticButton>
+
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="rounded-full uppercase tracking-[0.18em] text-xs"
+            >
+              <a
+                href="/Salman-Ahmed-Resume.pdf"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Resume
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.4, duration: 0.6 }}
+            className="flex items-center gap-3 pt-2"
+          >
+            {SOCIALS.map((item) => (
               <SocialIcon
-                key={index}
+                key={item.label}
                 url={item.href}
                 target="_blank"
-                className="hover:scale-125"
+                bgColor="transparent"
+                fgColor="currentColor"
+                className="text-muted-foreground transition-colors hover:!text-accent"
+                style={{ height: 36, width: 36 }}
               />
             ))}
-            <SocialIcon
-              network="email"
-              target="_blank"
+            <a
               href={`mailto:${EMAIL}`}
-              className="cursor-pointer hover:scale-125"
-            />
-            <motion.a
-              target="_blank"
-              href="Salman-Ahmed-Resume.pdf"
-              initial={{ scale: 1.3 }}
-              animate={{ scale: 1 }}
-              transition={{ ease: "easeIn", duration: 0.1 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9, x: "-5px", y: "5px" }}
-              type="button"
-              className="flex items-center gap-x-2 z-[1] py-2.5 hover:text-indigo-400 hover:border-indigo-400 px-4 ml-3 border-2 dark:border-white rounded-md"
+              aria-label="Email"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-accent"
             >
-              Resume <FaArrowRightLong />
-            </motion.a>
-          </div>
+              <Mail className="h-4 w-4" />
+            </a>
+          </motion.div>
         </div>
-      </div>
-      <div className="order-1 md:order-2 relative ">
+
         <motion.div
-          initial={{ rotate: -180, opacity: 0 }}
-          animate={{ rotate: 10, opacity: 1, scale: [0.5, 1.3, 1] }}
-          transition={{ ease: "easeInOut", duration: 1 }}
-          className="w-full h-full hidden md:flex absolute bg-indigo-400 rounded-lg"
-        />
-        <motion.div
-          initial={{ opacity: 0.5, scale: 0.3 }}
+          style={reduced ? undefined : { y: avatarY, scale: avatarScale }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ ease: "backOut", duration: 1.2 }}
-          className="relative"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative order-first md:order-last"
         >
-          <Image
-            src="/hero_avatar.png"
-            alt="hero_avatar"
-            className="w-96 select-none"
-            width={500}
-            height={500}
-            priority
-          />
+          <BlobAvatar />
         </motion.div>
+      </motion.div>
+
+      <div className="relative z-10 mt-auto pb-2">
+        <TechMarquee />
       </div>
+
+      <ScrollHint />
+    </section>
+  );
+};
+
+const BlobAvatar = () => {
+  return (
+    <div className="relative h-64 w-64 sm:h-80 sm:w-80 md:h-96 md:w-96">
+      <svg
+        viewBox="0 0 400 400"
+        className="absolute inset-0 h-full w-full"
+        aria-hidden
+      >
+        <defs>
+          <clipPath id="blob-mask" clipPathUnits="objectBoundingBox">
+            <path d="M0.82,0.55 C0.86,0.7 0.72,0.86 0.55,0.9 C0.38,0.94 0.18,0.86 0.1,0.7 C0.02,0.54 0.05,0.32 0.18,0.18 C0.32,0.04 0.56,-0.02 0.7,0.08 C0.84,0.18 0.78,0.4 0.82,0.55 Z" />
+          </clipPath>
+          <linearGradient id="blob-stroke" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.7" />
+            <stop
+              offset="100%"
+              stopColor="hsl(var(--accent))"
+              stopOpacity="0.05"
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M328 220 C344 280 288 344 220 360 C152 376 72 344 40 280 C8 216 20 128 72 72 C128 16 224 -8 280 32 C336 72 312 160 328 220 Z"
+          fill="none"
+          stroke="url(#blob-stroke)"
+          strokeWidth="1"
+        />
+      </svg>
+      <div
+        className="absolute inset-0"
+        style={{ clipPath: "url(#blob-mask)" }}
+      >
+        <Image
+          src="/hero_avatar.png"
+          alt="Salman Ahmed"
+          fill
+          priority
+          sizes="(min-width: 768px) 24rem, 16rem"
+          className="object-cover"
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-30"
+        style={{
+          clipPath: "url(#blob-mask)",
+          background:
+            "radial-gradient(circle at 30% 20%, hsl(var(--accent) / 0.45), transparent 60%)",
+        }}
+      />
     </div>
   );
 };
