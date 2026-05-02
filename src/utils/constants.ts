@@ -26,23 +26,15 @@ export const CAREER: TCareer[] = [
     role: "Senior Full Stack Engineer",
     company: "OneStream Live",
     companyLink: "https://onestream.live/",
-    duration: "2024-Present",
+    duration: "Dec 2024 - Present",
     details:
       "Working as a Senior Full Stack Engineer, pioneering the development of OneStream Frontend 2.0, and Backend 3.0, following the best practices, SOLID, and DRY principle.",
   },
   {
     role: "Full Stack Engineer",
-    company: "AI Synapse",
-    companyLink: "https://www.ai-synapse.io",
-    duration: "2024-2025",
-    details:
-      "Working as a Full Stack Engineer, I am responsible for both the development and deployment of new features. My role involves designing and implementing features and to optimize system performance and ensure efficient feature execution. I am dedicated to selecting and applying the best approaches to enhance backend functionality, ensuring robust and scalable solutions that meet the needs of our applications.",
-  },
-  {
-    role: "Full Stack Engineer",
     company: "Devsinc",
     companyLink: "https://www.devsinc.com",
-    duration: "2023-2024",
+    duration: "May 2023 - Dec 2024",
     details:
       "I've crafted and managed over 4+ high-performing, scalable applications employing diverse programming languages. Collaborated closely with cross-functional teams to grasp business needs and convert them into technical solutions. Proficiently utilized distributed databases such as MySQL, PostgreSQL, and MongoDB. Additionally, I've taken on the role of mentoring junior engineers, aiding in their technical and professional development.",
   },
@@ -50,7 +42,7 @@ export const CAREER: TCareer[] = [
     role: "Back End Engineer",
     company: "i2c Inc.",
     companyLink: "https://www.i2cinc.com",
-    duration: "2022-2023",
+    duration: "Sep 2022 - May 2023",
     details:
       "As part of a dynamic team, I contributed to the development of new schedulers for fintech applications, overseeing the overhaul of legacy code to enhance performance and security. Additionally, I spearheaded the creation of new tools tailored for C-level management. Serving as the Team Lead, I provided crucial guidance to a team of multiple engineers, ensuring cohesive progress and achievement of objectives.",
   },
@@ -59,7 +51,7 @@ export const CAREER: TCareer[] = [
     company: "Self-Employed - Freelance",
     companyLink: "#",
     isNoLink: true,
-    duration: "2020-2022",
+    duration: "Sep 2021 - Aug 2022",
     details:
       "I Developed and maintained microservices architecture for various web applications, leveraging technologies such as React.js, Node.js, Express.js, MongoDB, and Docker, reducing development time by 30%.",
   },
